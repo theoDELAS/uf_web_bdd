@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="container py-3">
+        <div class="card-columns">
+            {% for product in products %}
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-center text-capitalize">{{ product.title }}</h3>
+                    </div>
+                    <img class="card-img-top" src="{{ product.coverImage }}" alt="Card image cap">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p class="card-text">{{ product.description }}</p>
+                            <footer class="blockquote-footer">Catégorie : {{ product.category.name }}</footer>
+                        </blockquote>
+                        <div class="d-flex justify-content-around py-3">
+                            <p class="card-text font-weight-bold">{{ product.price }}€</p>
+                        </div>
+                        <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

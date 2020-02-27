@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux : {{ category.name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if category.product is empty %}
+            <div class="text-center h1 mt-5">Il n'y a aucun produit de cette catégorie</div>
+        {% else %}
+        <h1 class="text-center mt-4">{{ category.name }}</h1>
+        <div class="row">
+            {% for product in category.product %}
+                <div class="col-md-4 mb-3">
+                    <div class="card mx-auto mt-5">
+                        <img class="card-img-top" src="{{ product.coverImage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title text-center text-capitalize">{{ product.title }}</h3>
+                            <p class="card-text lead">{{ product.description }}</p>
+                            <div class="d-flex justify-content-around py-3">
+                                <p class="card-text font-weight-bold">{{ product.price }}€</p>
+                            </div>
+                            <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
