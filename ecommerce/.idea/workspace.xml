@@ -141,12 +141,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/partials" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\public\js" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\partials" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\account" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\product" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\public\js" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\src" />
     </key>
   </component>
@@ -174,7 +176,8 @@
       <updated>1582120225314</updated>
       <workItem from="1582120226374" duration="10404000" />
       <workItem from="1582727260685" duration="8320000" />
-      <workItem from="1582810839716" duration="10116000" />
+      <workItem from="1582810839716" duration="10418000" />
+      <workItem from="1583828043142" duration="11196000" />
     </task>
     <servers />
   </component>
@@ -186,21 +189,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1031" y="707" key="#com.intellij.ide.actions.DebugLogConfigureAction/0.0.1920.1040@0.0.1920.1040" timestamp="1582120833136" />
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582819606569">
+    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583836990963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582819606569" />
-    <state x="1220" y="273" key="FileChooserDialogImpl" timestamp="1582810920196">
+    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583836990963" />
+    <state x="1220" y="273" key="FileChooserDialogImpl" timestamp="1583828094193">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1220" y="273" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582810920196" />
+    <state x="1220" y="273" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583828094193" />
     <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1582732101218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582732101218" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582819779880">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1583837442741">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582819779880" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583837442741" />
   </component>
 </project>

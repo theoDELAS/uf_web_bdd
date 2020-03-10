@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Entity\Product;
 use App\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +16,9 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/create", name="product_create")
      * @IsGranted("ROLE_USER")
+     *
+     * @param Request $request
+     * @return Response
      */
     public function create(Request $request)
     {

@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Image;
 use App\Entity\Product;
 use App\Entity\User;
@@ -99,6 +100,18 @@ class AppFixtures extends Fixture
                     ->setProduct($product);
 
                 $manager->persist($image);
+            }
+
+            // Gestion des commentaires
+            $buyer = $users[mt_rand(0, count($users) -1)];
+
+            if(mt_rand(0, 1)) {
+                $comment = new Comment();
+                $comment->setContent($faker->paragraph())
+                    ->setRating(mt_rand(1, 5))
+                    ->setAuthor($buyer)
+                    ->setProduct($product);
+                $manager->persist($comment);
             }
             $manager->persist($product);
         }

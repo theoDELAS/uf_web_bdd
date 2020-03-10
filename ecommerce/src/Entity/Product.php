@@ -62,9 +62,15 @@ class Product
      */
     private $author;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="product", orphanRemoval=true)
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -82,6 +88,23 @@ class Product
             $this->slug = $slugify->slugify($this->title);
         }
     }
+
+    /**
+     * Permt d'obtenir la moyenne globale des notes pour cette annonce
+     *
+     * @param ArrayCollection $comments
+     */
+    public function getAvgRatings()
+    {
+        $sum = array_reduce($this->comments->toArray(), function($total, $comment) {
+            return $total + $comment->getRating();
+        }, 0);
+
+        if(count($this->comments) > 0) return $sum / count($this->comments);
+
+        return 0;
+    }
+
 
     public function getId(): ?int
     {
@@ -199,6 +222,37 @@ class Product
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getProduct() === $this) {
+                $comment->setProduct(null);
+            }
+        }
 
         return $this;
     }
