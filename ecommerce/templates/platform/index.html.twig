@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégorie : {{ category.name }}{% endblock %}
+{% block title %}Plateforme : {{ platform.name }}{% endblock %}
 
 {% block body %}
     <div class="container">
-        {% if category.product is empty %}
-            <div class="text-center h1 mt-5">Il n'y a aucun produit de cette catégorie</div>
+        {% if platform.product is empty %}
+        <div class="text-center h1 mt-5">Il n'y a aucun produit en vente sur cette plateforme pour le moment</div>
         {% else %}
-        <h1 class="text-center mt-4">{{ category.name }}</h1>
-        <p class="text-center alert alert-info mt-4">Il y'a actuellement <u>{{ category.product | length }} jeux</u> en vente dans cette catégorie</p>
+        <h1 class="text-center mt-4">{{ platform.name }}</h1>
+        <p class="text-center alert alert-info mt-4">Il y'a actuellement <u>{{ platform.product | length }} jeux</u> en vente pour cette plateforme</p>
         <div class="row">
-            {% for product in category.product %}
+            {% for product in platform.product %}
                 <div class="col-md-4 mb-3">
                     <div class="card mx-auto mt-5">
                         <img class="card-img-top" src="{{ product.coverImage }}" alt="Card image cap">

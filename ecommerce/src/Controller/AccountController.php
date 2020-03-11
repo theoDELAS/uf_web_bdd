@@ -167,7 +167,7 @@ class AccountController extends AbstractController
                     'success',
                     "Votre mot de passe a bien été modifié"
                 );
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('account_index');
             }
         }
 

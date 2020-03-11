@@ -13,7 +13,14 @@
                     <div class="col-7">
                         <h1 class="text-capitalize h2">{{ product.title }}</h1>
                         <blockquote>
-                            <p class="blockquote-footer">Catégorie : {{ product.category.name }}</p>
+                            <p class="blockquote-footer">Catégorie : <a href="{{ path('category_index', {'id': category.id}) }}">{{ product.category.name }}</a></p>
+                            <p class="blockquote-footer">Plateforme :
+                                {% for platform in platforms %}
+                                    <a href="{{ path('platform_index', {'id': platform.id}) }}">
+                                        {{ platform.name }}
+                                    </a>
+                                {% endfor %}
+                            </p>
                         </blockquote>
                         <hr>
                         <p>{{ product.description }}</p>

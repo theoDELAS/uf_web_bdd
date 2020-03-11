@@ -6,6 +6,7 @@ use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -67,10 +68,18 @@ class Product
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Platform", mappedBy="product")
+     */
+    private $platforms;
+
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->platform = new ArrayCollection();
+        $this->platforms = new ArrayCollection();
     }
 
 
@@ -252,6 +261,34 @@ class Product
             if ($comment->getProduct() === $this) {
                 $comment->setProduct(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Platform[]
+     */
+    public function getPlatforms(): Collection
+    {
+        return $this->platforms;
+    }
+
+    public function addPlatform(Platform $platform): self
+    {
+        if (!$this->platforms->contains($platform)) {
+            $this->platforms[] = $platform;
+            $platform->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlatform(Platform $platform): self
+    {
+        if ($this->platforms->contains($platform)) {
+            $this->platforms->removeElement($platform);
+            $platform->removeProduct($this);
         }
 
         return $this;

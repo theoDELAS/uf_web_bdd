@@ -67,6 +67,8 @@ class ProductController extends AbstractController
     {
         return $this->render('product/index.html.twig', [
             'product' => $product,
+            'category' => $product->getCategory(),
+            'platforms' => $product->getPlatforms()->getValues()
         ]);
     }
 }

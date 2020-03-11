@@ -5,7 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Image;
+use App\Entity\Platform;
 use App\Entity\Product;
+use App\Entity\Role;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -25,18 +27,35 @@ class AppFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
+        // Role admin
+        $adminRole = new Role();
+        $adminRole->setTitle('ROLE_ADMIN');
+        $manager->persist($adminRole);
+
+        $adminUser = new User();
+        $adminUser->setFirstName('Théo')
+            ->setLastName('Delas')
+            ->setEmail('theo.delas@gmail.com')
+            ->setHash($this->encoder->encodePassword($adminUser, 'password'))
+            ->setPicture('https://randomuser.me/portraits/men/13.jpg')
+            ->setIntroduction($faker->sentence())
+            ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
+            ->addUserRole($adminRole);
+        $manager->persist($adminUser);
+
         // Création des différentes catégories
         $categories = array(
             'Action',
             'Guerre',
             'Aventure',
             'Stratégie',
-            'Enigmes'
+            'Enigme',
+            'Autre'
         );
 
         $categoriesTab = [];
 
-        for ($i = 0; $i < 5; $i++)
+        for ($i = 0; $i < sizeof($categories); $i++)
         {
             $category = new Category();
             $category->setName($categories[$i]);
@@ -44,6 +63,24 @@ class AppFixtures extends Fixture
             $categoriesTab[] = $category;
 
             $manager->persist($category);
+        }
+
+        // La plateforme
+        $platforms = array(
+            'PC',
+            'XBOX',
+            'PS4'
+        );
+
+        $platformsTab = [];
+
+        for ($i = 0; $i < sizeof($platforms); $i++) {
+            $platform = new Platform();
+            $platform->setName($platforms[$i]);
+
+            $platformsTab[] = $platform;
+
+            $manager->persist($platform);
         }
 
         // Les utilisateurs
@@ -76,7 +113,7 @@ class AppFixtures extends Fixture
         }
 
          // Génere des produits fake
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $coverImage = "https://picsum.photos/id/".mt_rand(1, 500)."/750/350";
 
             $user = $users[mt_rand(0, count($users) - 1)];
@@ -86,7 +123,13 @@ class AppFixtures extends Fixture
             $product->setDescription($faker->text);
             $product->setPrice($faker->numberBetween($min = 0, $max = 50));
             $product->setCoverImage($coverImage);
-            $product->setCategory($categoriesTab[mt_rand(0, 4)]);
+            $product->setCategory($categoriesTab[mt_rand(0, sizeof($categories) - 1)]);
+
+            foreach ($platformsTab as $platform) {
+                if (mt_rand(0, 1)) {
+                    $product->addPlatform($platform);
+                }
+            }
             $product->setAuthor($user);
 
 
