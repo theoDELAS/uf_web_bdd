@@ -21,20 +21,6 @@
 
         {{ user.description | raw }}
         <hr>
-        <h2 class="my-5">Les jeux de {{ user.fullName }}</h2>
 
-        {% if user.products | length > 0 %}
-            <div class="row">
-                {% for product in user.products %}
-                    {% include 'product/_product.html.twig' %}
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="alert alert-warning">
-                <p>
-                    <strong>{{ user.fullName }} n'a pas encore mit de jeu sur ce site</strong>
-                </p>
-            </div>
-        {% endif %}
     </div>
 {% endblock %}

@@ -40,7 +40,8 @@ class AppFixtures extends Fixture
             ->setPicture('https://randomuser.me/portraits/men/13.jpg')
             ->setIntroduction($faker->sentence())
             ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
-            ->addUserRole($adminRole);
+            ->addUserRole($adminRole)
+            ->setBalance(mt_rand(0, 1000));
         $manager->persist($adminUser);
 
         // Création des différentes catégories
@@ -69,7 +70,8 @@ class AppFixtures extends Fixture
         $platforms = array(
             'PC',
             'XBOX',
-            'PS4'
+            'PS4',
+            'Stadia'
         );
 
         $platformsTab = [];
@@ -106,7 +108,8 @@ class AppFixtures extends Fixture
                 ->setIntroduction($faker->sentence)
                 ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
                 ->setHash($hash)
-                ->setPicture($picture);
+                ->setPicture($picture)
+                ->setBalance(mt_rand(0, 1000));
 
             $manager->persist($user);
             $users[] = $user;
@@ -126,7 +129,7 @@ class AppFixtures extends Fixture
             $product->setCategory($categoriesTab[mt_rand(0, sizeof($categories) - 1)]);
 
             foreach ($platformsTab as $platform) {
-                if (mt_rand(0, 1)) {
+                if (mt_rand(0, 5) > 2) {
                     $product->addPlatform($platform);
                 }
             }

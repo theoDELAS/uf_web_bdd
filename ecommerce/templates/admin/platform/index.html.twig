@@ -1,0 +1,33 @@
+{% extends '/admin/base.html.twig' %}
+
+{% block title %}Administration des jeux{% endblock %}
+
+{% block body %}
+    <div class="container text-center">
+        <h1 class="my-5">Gestion des plateformes</h1>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Plateforme</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for platform in platforms %}
+                <tr>
+                    <td>{{ platform.id }}</td>
+                    <td>{{ platform.name | capitalize }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                        <a href="{{ path('admin_platform_delete', {'id': platform.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('admin_platform_create') }}" class="btn btn-success w-100"><i class="fas fa-plus"></i></a>
+    </div>
+{% endblock %}

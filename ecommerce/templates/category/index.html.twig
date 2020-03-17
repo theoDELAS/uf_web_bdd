@@ -19,6 +19,11 @@
                             <p class="card-text lead">{{ product.description }}</p>
                             <div class="d-flex justify-content-around py-3">
                                 <p class="card-text font-weight-bold">{{ product.price }}€</p>
+                                {% if product.comments | length > 0 %}
+                                    {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
+                                {% else %}
+                                    <p>Pas encore noté</p>
+                                {% endif %}
                             </div>
                             <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
                         </div>

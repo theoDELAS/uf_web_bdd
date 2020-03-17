@@ -49,7 +49,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ path('home') }}">Nanomania</a>
+    <a class="navbar-brand" href="{{ path('product_index') }}">Nanomania</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,8 +59,11 @@
             <li class="nav-item">
                 <a class="nav-link mr-3" href="{{ path('home') }}">Accueil</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link mr-3" href="{{ path('product_index') }}">Jeux vidéos</a>
+            </li>
             <li class="nav-item dropdown mr-3">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Jeux Vidéos</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catégories</a>
                 <div class="dropdown-menu">
                     {% for category in categories %}
                         <a class="dropdown-item" href="{{ path('category_index', {'id': category.id}) }}">{{ category.name }}</a>
@@ -78,6 +81,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             {% if app.user %}
+                <li class="nav-item mr-5">
+                    <span href="#" class="navbar-text">Mon solde : {{ app.user.balance }} &euro;</span>
+                </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink">
                         <img src="{{ app.user.picture }}" class="avatar avatar-mini" alt="Avatar de {{ app.user.firstName }}"> {{ app.user.firstName }}

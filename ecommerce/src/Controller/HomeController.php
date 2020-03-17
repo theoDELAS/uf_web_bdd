@@ -25,15 +25,25 @@ class HomeController extends AbstractController
      */
     public function index(ProductRepository $product)
     {
-        $products = $product->findAll();
-        return $this->render('home/index.html.twig', [
-            'products' => $products
-        ]);
+        return $this->render(
+            'home/index.html.twig',
+            [
+                'products' => $product->findBestProducts(3)
+            ]
+        );
     }
 
     public function navBar()
     {
         return $this->render('partials/navbar.html.twig', [
+            'categories' => $this->categoryRepository->findAll(),
+            'platforms' => $this->platformRepository->findAll()
+        ]);
+    }
+
+    public function adminNavBar()
+    {
+        return $this->render('admin/partials/navbar.html.twig', [
             'categories' => $this->categoryRepository->findAll(),
             'platforms' => $this->platformRepository->findAll()
         ]);

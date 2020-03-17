@@ -93,6 +93,11 @@ class User implements UserInterface
      */
     private $userRoles;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $balance;
+
     public function getFullName()
     {
         return "{$this->firstName} {$this->lastName}";
@@ -349,6 +354,18 @@ class User implements UserInterface
             $this->userRoles->removeElement($userRole);
             $userRole->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getBalance(): ?int
+    {
+        return $this->balance;
+    }
+
+    public function setBalance(int $balance): self
+    {
+        $this->balance = $balance;
 
         return $this;
     }

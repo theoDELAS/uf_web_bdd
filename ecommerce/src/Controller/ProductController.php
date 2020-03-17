@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Image;
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
+
+    /**
+     * @Route("/product", name="product_index")
+     */
+    public function index(ProductRepository $product)
+    {
+        $products = $product->findAll();
+        return $this->render('product/index.html.twig', [
+            'products' => $products
+        ]);
+    }
+
     /**
      * @Route("/product/create", name="product_create")
      * @IsGranted("ROLE_USER")
@@ -65,7 +78,7 @@ class ProductController extends AbstractController
      */
     public function show(Product $product)
     {
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/show.html.twig', [
             'product' => $product,
             'category' => $product->getCategory(),
             'platforms' => $product->getPlatforms()->getValues()

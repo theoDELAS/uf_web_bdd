@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-5">
+                        <img src="{{ product.coverImage }}"  class="img-fluid rounded" alt="image du jeu {{ product.title }}">
+                    </div>
+                    <div class="col-7">
+                        <h1 class="text-capitalize h2">{{ product.title }}</h1>
+                        <blockquote>
+                            <p class="blockquote-footer">Catégorie : <a href="{{ path('category_index', {'id': category.id}) }}">{{ product.category.name }}</a></p>
+                            <p class="blockquote-footer">Plateforme :
+                                {% for platform in platforms %}
+                                    <a href="{{ path('platform_index', {'id': platform.id}) }}">
+                                        {{ platform.name }} /
+                                    </a>
+                                {% endfor %}
+                            </p>
+                        </blockquote>
+                        <hr>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+
+                <hr class="my-3">
+
+                <div>
+                    {% if product.comments | length > 0 %}
+                        <div class="alert alert-info">
+                            <h4 class="alert-heading text-center">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Note globale donnée par les utilisateurs
+                                    </div>
+                                    <div class="col">
+                                        {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
+                                        <br>
+                                        <small>(Calculée sur {{ product.comments | length }} avis)</small>
+                                    </div>
+                                </div>
+                            </h4>
+                        </div>
+
+                        {% for comment in product.comments %}
+                            <div class="bg-light rounded mb-3 py-3 px-3">
+                                <strong>{{ comment.author.firstName }}</strong>:
+                                <blockquote>
+                                    {{ comment.content }}
+                                </blockquote>
+
+                                <strong>Note : </strong>
+                                {% include 'partials/rating.html.twig' with {'rating' : comment.rating} %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h2>Cette annonce n'a pas encore reçu de commentaire</h2>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-4 text-center">
+                <h3>Panier <i class="fas fa-shopping-cart"></i></h3>
+                <hr>
+                <p class="h1">{{ product.price }} &euro;</p>
+                <button class="btn btn-success">Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -19,6 +19,18 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function findBestProducts($limit) {
+        return $this->createQueryBuilder('p')
+            ->select('p as jeu, AVG(c.rating) as avgRatings')
+            ->join('p.comments', 'c')
+            ->groupBy('p')
+            ->orderBy('avgRatings', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

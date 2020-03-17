@@ -1,4 +1,4 @@
-<div class="col-md-4 mb-2">
+<div class="col-md-4">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title text-center text-capitalize">{{ product.title }}</h3>
@@ -8,10 +8,21 @@
             <blockquote class="blockquote mb-0">
                 <p class="card-text">{{ product.description }}</p>
                 <footer class="blockquote-footer">Catégorie : {{ product.category.name }}</footer>
+                <footer class="blockquote-footer">Plateforme :
+                    {% for platform in product.platforms %}
+                        {{ platform.name }} /
+                    {% endfor %}
+                </footer>
             </blockquote>
             <div class="d-flex justify-content-around py-3">
                 <p class="card-text font-weight-bold">{{ product.price }}€</p>
+                {% if product.comments | length > 0 %}
+                    {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
+                {% else %}
+                    <p>Pas encore noté</p>
+                {% endif %}
             </div>
+            <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
         </div>
     </div>
 </div>

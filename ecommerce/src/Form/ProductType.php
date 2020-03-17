@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Platform;
 use App\Entity\Product;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -40,6 +43,14 @@ class ProductType extends ApplicationType
                 'category',
                 null,
                 ['label' => 'Catégorie']
+            )
+            ->add(
+                'platforms', EntityType::class, [ // add this
+                    'class' => Platform::class,
+                    'label'     => 'Plateformes de jeu',
+                    'expanded'  => true,
+                    'multiple'  => true
+                    ]
             )
             ->add(
                 'images',
