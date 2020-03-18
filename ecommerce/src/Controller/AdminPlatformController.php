@@ -8,6 +8,7 @@ use App\Repository\PlatformRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminPlatformController extends AbstractController
@@ -21,7 +22,6 @@ class AdminPlatformController extends AbstractController
             'platforms' => $platforms->findAll(),
         ]);
     }
-
 
     /**
      * @Route("/admin/platform/create", name="admin_platform_create")
@@ -52,7 +52,6 @@ class AdminPlatformController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/admin/platform/{id}/delete", name="admin_platform_delete")
      *
@@ -69,8 +68,41 @@ class AdminPlatformController extends AbstractController
             'success',
             "La plateforme <strong>{$platform->getName()}</strong> a bien été supprimée"
         );
-
-
         return $this->redirectToRoute('admin_platform_index');
+    }
+
+    /**
+     * Permet d'afficher le formulaire d'edition
+     *
+     * @Route("/admin/platform/{id}/edit", name="admin_platform_edit")
+     *
+     * @param Platform $platform
+     * @param Request
+     * @return Response
+     */
+    public function edit(Platform $platform, Request $request, EntityManagerInterface $manager)
+    {
+        $form = $this->createForm(AdminPlatformType::class, $platform);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($platform);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "La plateforme <strong>{$platform->getName()}</strong> a bien été modifiée"
+            );
+
+            return $this->redirectToRoute('admin_platform_index', [
+                'platform' => $platform
+            ]);
+        }
+
+        return $this->render('admin/platform/edit.html.twig', [
+            'platform' => $platform,
+            'form' => $form->createView()
+        ]);
     }
 }

@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -29,6 +32,7 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=10, minMessage="Votre commentaire doit faire au minimum 10 caractères")
      */
     private $content;
 

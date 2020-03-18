@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Image;
 use App\Entity\Product;
+use App\Form\CommentType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +17,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-
     /**
      * @Route("/product", name="product_index")
      */
@@ -76,12 +78,37 @@ class ProductController extends AbstractController
      * @param Product $product
      * @return Response
      */
-    public function show(Product $product)
+    public function show(Product $product, Request $request, EntityManagerInterface $manager)
     {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $comment->setAuthor($this->getUser());
+            $comment->setProduct($product);
+
+            $manager->persist($comment);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Votre commentaire concernant le jeu <strong>{$product->getTitle()}</strong> a bien été enregistrée"
+            );
+
+            return $this->redirectToRoute('product_show', [
+                'slug' => $product->getSlug()
+            ]);
+        }
+
+
         return $this->render('product/show.html.twig', [
             'product' => $product,
             'category' => $product->getCategory(),
-            'platforms' => $product->getPlatforms()->getValues()
+            'platforms' => $product->getPlatforms()->getValues(),
+            'form' => $form->createView()
         ]);
     }
 }

@@ -155,21 +155,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/platform" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\src" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\product" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\product" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\partials" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\platform" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\dashboard" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\platform" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\src" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\product" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\product" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\partials" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -202,7 +202,9 @@
       <workItem from="1584089417310" duration="2473000" />
       <workItem from="1584097210057" duration="2719000" />
       <workItem from="1584350478811" duration="5982000" />
-      <workItem from="1584431621860" duration="9846000" />
+      <workItem from="1584431621860" duration="10317000" />
+      <workItem from="1584520507933" duration="685000" />
+      <workItem from="1584521833039" duration="13013000" />
     </task>
     <servers />
   </component>
@@ -214,14 +216,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1031" y="707" key="#com.intellij.ide.actions.DebugLogConfigureAction/0.0.1920.1040@0.0.1920.1040" timestamp="1582120833136" />
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584441162930">
+    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584525986932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584525986932" />
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584441162930" />
-    <state x="518" y="208" key="FileChooserDialogImpl" timestamp="1584097285879">
+    <state x="518" y="208" key="FileChooserDialogImpl" timestamp="1584520592344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="518" y="208" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584097285879" />
+    <state x="518" y="208" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584520592344" />
     <state x="776" y="441" key="NewPhpFileDialog" timestamp="1584442428824">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -230,14 +233,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="160" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584439512308" />
-    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1584437432919">
+    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1584526523468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584526523468" />
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584437432919" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584435793411">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584541654999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584356834859" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584541654999" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584435793411" />
   </component>
 </project>

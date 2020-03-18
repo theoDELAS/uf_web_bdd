@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200311092053 extends AbstractMigration
+final class Version20200318153515 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,10 @@ final class Version20200311092053 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE product_platform');
+        $this->addSql('ALTER TABLE product DROP FOREIGN KEY FK_D34A04ADF77D927C');
+        $this->addSql('DROP TABLE panier');
+        $this->addSql('DROP INDEX IDX_D34A04ADF77D927C ON product');
+        $this->addSql('ALTER TABLE product DROP panier_id');
     }
 
     public function down(Schema $schema) : void
@@ -30,8 +33,9 @@ final class Version20200311092053 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE product_platform (product_id INT NOT NULL, platform_id INT NOT NULL, INDEX IDX_F2E2BA5C4584665A (product_id), INDEX IDX_F2E2BA5CFFE6496F (platform_id), PRIMARY KEY(product_id, platform_id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
-        $this->addSql('ALTER TABLE product_platform ADD CONSTRAINT FK_F2E2BA5C4584665A FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE product_platform ADD CONSTRAINT FK_F2E2BA5CFFE6496F FOREIGN KEY (platform_id) REFERENCES platform (id) ON DELETE CASCADE');
+        $this->addSql('CREATE TABLE panier (id INT AUTO_INCREMENT NOT NULL, amount INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('ALTER TABLE product ADD panier_id INT NOT NULL');
+        $this->addSql('ALTER TABLE product ADD CONSTRAINT FK_D34A04ADF77D927C FOREIGN KEY (panier_id) REFERENCES panier (id)');
+        $this->addSql('CREATE INDEX IDX_D34A04ADF77D927C ON product (panier_id)');
     }
 }

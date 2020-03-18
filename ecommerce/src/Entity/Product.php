@@ -73,7 +73,6 @@ class Product
      */
     private $platforms;
 
-
     public function __construct()
     {
         $this->images = new ArrayCollection();

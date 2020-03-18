@@ -13,3 +13,11 @@
 .fa-star {
     color: goldenrod;
 }
+
+.alert-success {
+    margin-top: 2em;
+}
+
+.alert-danger {
+    margin-top: 40px;
+}

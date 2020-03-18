@@ -21,7 +21,7 @@
                     <td>{{ platform.id }}</td>
                     <td>{{ platform.name | capitalize }}</td>
                     <td>
-                        <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                        <a href="{{ path('admin_platform_edit', {'id': platform.id}) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
                         <a href="{{ path('admin_platform_delete', {'id': platform.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
