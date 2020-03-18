@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Image;
+use App\Entity\Panier;
 use App\Entity\Product;
 use App\Form\CommentType;
 use App\Form\ProductType;
@@ -70,6 +71,31 @@ class ProductController extends AbstractController
 
         return $this->render('product/create.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/product/{slug}/add", name="product_add")
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addPanier(Product $product, EntityManagerInterface $manager)
+    {
+        $panier = new Panier();
+
+        $panier->addProduct($product);
+        $panier->setUser($this->getUser());
+        $panier->setAmount($product->getPrice());
+
+        $manager->persist($panier);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "Le jeu <strong>{$product->getTitle()}</strong> a bien été ajouté à votre panier"
+        );
+        return $this->redirectToRoute('product_show', [
+            'slug' => $product->getSlug()
         ]);
     }
 

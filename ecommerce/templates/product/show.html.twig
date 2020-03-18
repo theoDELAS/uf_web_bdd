@@ -21,11 +21,14 @@
                                     </a>
                                 {% endfor %}
                             </p>
+                            <p>{{ product.price }} &euro;</p>
                         </blockquote>
                     </div>
-                    <div class="col-6">
-                        <a href="#" class="btn btn-success">Ajouter au panier</a>
-                    </div>
+                    {% if app.user %}
+                        <div class="col-6">
+                            <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-success">Ajouter au panier</a>
+                        </div>
+                    {% endif %}
                 </div>
 
                 <hr>

@@ -98,6 +98,11 @@ class User implements UserInterface
      */
     private $balance;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $panier;
+
     public function getFullName()
     {
         return "{$this->firstName} {$this->lastName}";
@@ -366,6 +371,23 @@ class User implements UserInterface
     public function setBalance(int $balance): self
     {
         $this->balance = $balance;
+
+        return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(Panier $panier): self
+    {
+        $this->panier = $panier;
+
+        // set the owning side of the relation if necessary
+        if ($panier->getUser() !== $this) {
+            $panier->setUser($this);
+        }
 
         return $this;
     }

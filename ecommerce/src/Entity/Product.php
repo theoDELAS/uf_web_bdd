@@ -73,12 +73,18 @@ class Product
      */
     private $platforms;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Panier", mappedBy="product")
+     */
+    private $paniers;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->platform = new ArrayCollection();
         $this->platforms = new ArrayCollection();
+        $this->paniers = new ArrayCollection();
     }
 
 
@@ -288,6 +294,34 @@ class Product
         if ($this->platforms->contains($platform)) {
             $this->platforms->removeElement($platform);
             $platform->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Panier[]
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers[] = $panier;
+            $panier->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->paniers->contains($panier)) {
+            $this->paniers->removeElement($panier);
+            $panier->removeProduct($this);
         }
 
         return $this;
