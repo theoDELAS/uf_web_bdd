@@ -155,7 +155,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/platform" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -204,7 +204,8 @@
       <workItem from="1584350478811" duration="5982000" />
       <workItem from="1584431621860" duration="10317000" />
       <workItem from="1584520507933" duration="685000" />
-      <workItem from="1584521833039" duration="15087000" />
+      <workItem from="1584521833039" duration="15988000" />
+      <workItem from="1585037864228" duration="9233000" />
     </task>
     <servers />
   </component>
@@ -233,15 +234,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="160" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584439512308" />
+    <state width="498" height="454" key="SwitcherDM" timestamp="1585046622803">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="454" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585046622803" />
     <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1584526523468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584526523468" />
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584437432919" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584547321026">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585049985711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584547321026" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585049985711" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584435793411" />
   </component>
 </project>

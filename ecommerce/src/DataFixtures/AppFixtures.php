@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Image;
+use App\Entity\Panier;
 use App\Entity\Platform;
 use App\Entity\Product;
 use App\Entity\Role;
@@ -33,6 +34,9 @@ class AppFixtures extends Fixture
         $manager->persist($adminRole);
 
         $adminUser = new User();
+        $panier = new Panier();
+        $panier->setAmount(0);
+        $manager->persist($panier);
         $adminUser->setFirstName('Théo')
             ->setLastName('Delas')
             ->setEmail('theo.delas@gmail.com')
@@ -41,7 +45,8 @@ class AppFixtures extends Fixture
             ->setIntroduction($faker->sentence())
             ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
             ->addUserRole($adminRole)
-            ->setBalance(mt_rand(0, 1000));
+            ->setBalance(mt_rand(0, 1000))
+            ->setPanier($panier);
         $manager->persist($adminUser);
 
         // Création des différentes catégories
@@ -93,6 +98,10 @@ class AppFixtures extends Fixture
         {
             $user = new User();
 
+            $panier =  new Panier();
+            $panier->setAmount(0);
+            $manager->persist($panier);
+
             $genre = $faker->randomElement($genres);
 
             $picture = 'https://randomuser.me/portraits/';
@@ -109,7 +118,8 @@ class AppFixtures extends Fixture
                 ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
                 ->setHash($hash)
                 ->setPicture($picture)
-                ->setBalance(mt_rand(0, 1000));
+                ->setBalance(mt_rand(0, 1000))
+                ->setPanier($panier);
 
             $manager->persist($user);
             $users[] = $user;
@@ -124,7 +134,7 @@ class AppFixtures extends Fixture
             $product = new Product();
             $product->setTitle($faker->word);
             $product->setDescription($faker->text);
-            $product->setPrice($faker->numberBetween($min = 0, $max = 50));
+            $product->setPrice($faker->numberBetween($min = 5, $max = 50));
             $product->setCoverImage($coverImage);
             $product->setCategory($categoriesTab[mt_rand(0, sizeof($categories) - 1)]);
 

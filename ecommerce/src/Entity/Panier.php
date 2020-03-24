@@ -29,14 +29,14 @@ class Panier
     private $product;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="panier", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="panier")
      */
     private $user;
 
     public function __construct()
     {
         $this->product = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,6 +54,10 @@ class Panier
         $this->amount = $amount;
 
         return $this;
+    }
+
+    public function getTotal() {
+
     }
 
     /**
@@ -82,14 +86,33 @@ class Panier
         return $this;
     }
 
-    public function getUser(): ?User
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
     {
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function addUser(User $user): self
     {
-        $this->user = $user;
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setPanier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getPanier() === $this) {
+                $user->setPanier(null);
+            }
+        }
 
         return $this;
     }

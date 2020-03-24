@@ -4,6 +4,76 @@
 
 {% block body %}
     <div class="container py-5">
-        <h1>panier</h1>
+        <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Mon panier
+                <a href="" class="btn btn-outline-info pull-right ml-5">Continuer mes achats</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="card-body">
+                <!-- PRODUCT -->
+                {% for product in panier.product %}
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-2 text-center">
+                        <img class="img-responsive" src="{{ product.coverImage }}" alt="prewiew" width="120" height="80">
+                    </div>
+                    <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                        <h4 class="product-name"><strong>{{ product.title }}</strong></h4>
+                        <h4>
+                            <small>{{ product.description }}</small>
+                        </h4>
+                    </div>
+                    <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                        <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                            <h6><strong>{{ product.price }}&euro; <span class="text-muted">x</span></strong></h6>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="quantity">
+                                <input type="button" value="+" class="plus">
+                                <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                       size="4">
+                                <input type="button" value="-" class="minus">
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-2 text-right">
+                            <button type="button" class="btn btn-outline-danger btn-xs">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+                <!-- END PRODUCT -->
+            </div>
+            <div class="card-footer">
+                <div>
+                    Total : <b>{{ panier.amount }}&euro;</b>
+                    <a href="" class="btn btn-success">Checkout</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+{#        <div class="alert alert-light">#}
+{#            <h2 class="my-3">Détails</h2>#}
+{#            <dl class="row">#}
+{#                {% for product in panier.product %}#}
+{#                    <dt class="col-md-4">Article n°{{ loop.index }}</dt>#}
+{#                    <dd class="col-md-8">{{ product.title }}</dd>#}
+{#                    <dt class="col-md-4">Prix</dt>#}
+{#                    <dd class="col-md-8">{{ product.price }}&euro;</dd>#}
+{#                {% endfor %}#}
+{#                <dt class="col-md-4">Nombre d'articles</dt>#}
+{#                <dd class="col-md-8">{{ panier.product | length }}</dd>#}
+{#                <dt class="col-md-4">Total</dt>#}
+{#                <dd class="col-md-8">{{ panier.amount }}&euro;</dd>#}
+{#            </dl>#}
+{#        </div>#}
     </div>
 {% endblock %}

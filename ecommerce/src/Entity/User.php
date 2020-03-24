@@ -99,14 +99,15 @@ class User implements UserInterface
     private $balance;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Panier", mappedBy="user")
+     */
+    private $paniers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Panier", inversedBy="user")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $panier;
-
-    public function getFullName()
-    {
-        return "{$this->firstName} {$this->lastName}";
-    }
 
 
     /**
@@ -129,6 +130,7 @@ class User implements UserInterface
         $this->products = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->userRoles = new ArrayCollection();
+        $this->paniers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,6 +160,11 @@ class User implements UserInterface
         $this->lastName = $lastName;
 
         return $this;
+    }
+
+    public function getFullName()
+    {
+        return "{$this->firstName} {$this->lastName}";
     }
 
     public function getEmail(): ?string
@@ -380,14 +387,9 @@ class User implements UserInterface
         return $this->panier;
     }
 
-    public function setPanier(Panier $panier): self
+    public function setPanier(?Panier $panier): self
     {
         $this->panier = $panier;
-
-        // set the owning side of the relation if necessary
-        if ($panier->getUser() !== $this) {
-            $panier->setUser($this);
-        }
 
         return $this;
     }

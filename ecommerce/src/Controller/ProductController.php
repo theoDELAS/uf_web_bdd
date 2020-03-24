@@ -9,6 +9,7 @@ use App\Entity\Product;
 use App\Form\CommentType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Doctrine\DBAL\Types\IntegerType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -81,11 +82,12 @@ class ProductController extends AbstractController
      */
     public function addPanier(Product $product, EntityManagerInterface $manager)
     {
-        $panier = new Panier();
+        $panier = $this->getUser()->getPanier();
+        $amount = $panier->getAmount();
 
         $panier->addProduct($product);
-        $panier->setUser($this->getUser());
-        $panier->setAmount($product->getPrice());
+        $panier->addUser($this->getUser());
+        $panier->setAmount($amount + $product->getPrice());
 
         $manager->persist($panier);
         $manager->flush();
