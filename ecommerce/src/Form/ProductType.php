@@ -32,12 +32,12 @@ class ProductType extends ApplicationType
             ->add(
                 'coverImage',
                 UrlType::class,
-                $this->getConfiguration('Image', 'Adresse de l\'image')
+                $this->getConfiguration('Image', 'URL de l\'image. ex: https://picsum.photos/id/47/640/480')
             )
             ->add(
                 'description',
                 TextareaType::class,
-                $this->getConfiguration('Description', 'Description sur la qualité de votre jeu')
+                $this->getConfiguration('Description', 'Description du jeu')
             )
             ->add(
                 'category',
@@ -51,15 +51,6 @@ class ProductType extends ApplicationType
                     'expanded'  => true,
                     'multiple'  => true
                     ]
-            )
-            ->add(
-                'images',
-                CollectionType::class,
-                [
-                    'entry_type' => ImageType::class,
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                ]
             )
         ;
     }

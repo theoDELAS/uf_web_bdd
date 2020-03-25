@@ -13,7 +13,7 @@
                 <a class="nav-link mr-3" href="{{ path('product_index') }}">Jeux vidéos</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catégories</a>
+                <a class="nav-link dropdown-toggle mr-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catégories</a>
                 <div class="dropdown-menu">
                     {% for category in categories %}
                         <a class="dropdown-item" href="{{ path('category_index', {'id': category.id}) }}">{{ category.name }}</a>

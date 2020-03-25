@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Comment;
-use App\Entity\Image;
 use App\Entity\Panier;
 use App\Entity\Platform;
 use App\Entity\Product;
@@ -145,18 +144,6 @@ class AppFixtures extends Fixture
             }
             $product->setAuthor($user);
 
-
-            // générer des images randoms pour chaque produits
-            for ($j = 1; $j <= mt_rand(2, 5); $j++)
-            {
-                $image = new Image();
-
-                $image->setUrl("https://picsum.photos/id/".mt_rand(1, 500)."/640/480")
-                    ->setCaption($faker->sentence())
-                    ->setProduct($product);
-
-                $manager->persist($image);
-            }
 
             // Gestion des commentaires
             $buyer = $users[mt_rand(0, count($users) -1)];

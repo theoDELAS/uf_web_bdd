@@ -30,50 +30,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/product/create", name="product_create")
-     * @IsGranted("ROLE_USER")
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function create(Request $request)
-    {
 
-        $product = new Product();
-
-        $form = $this->createForm(ProductType::class, $product);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $manager = $this->getDoctrine()->getManager();
-
-            foreach($product->getImages() as $image) {
-                $image->setProduct($product);
-                $manager->persist($image);
-            }
-
-            $product->setAuthor($this->getUser());
-
-            $manager->persist($product);
-            $manager->flush();
-
-            $this->addFlash(
-                'success',
-                "L'annonce <strong>{$product->getTitle()}</strong> a bien été enregistrée"
-            );
-
-            return $this->redirectToRoute('product_show', [
-                'slug' => $product->getSlug()
-            ]);
-        }
-
-        return $this->render('product/create.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
 
     /**
      * @Route("/product/{slug}/add", name="product_add")

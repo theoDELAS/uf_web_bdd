@@ -47,11 +47,6 @@ class Product
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="product", orphanRemoval=true)
-     */
-    private $images;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="product")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -80,7 +75,6 @@ class Product
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->platform = new ArrayCollection();
         $this->platforms = new ArrayCollection();
@@ -181,37 +175,6 @@ class Product
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Image[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): self
-    {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getProduct() === $this) {
-                $image->setProduct(null);
-            }
-        }
 
         return $this;
     }

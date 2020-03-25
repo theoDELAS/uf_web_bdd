@@ -4,8 +4,10 @@
 
 {% block body %}
     <div class="container-fluid">
-        <h1 class="my-5">Gestion des jeux</h1>
-
+        <div class="text-center">
+            <h1 class="my-5">Gestion des jeux</h1>
+            <a href="{{ path('admin_product_create') }}" class="btn btn-light w-100"><i class="fas fa-plus"></i></a>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -19,12 +21,12 @@
             </thead>
 
             <tbody>
-            {% for product in products %}
+            {% for product in pagination.data %}
                 {% set platforms = product.platforms %}
 
                 <tr>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.title | capitalize }}</td>
+                    <td class="active">{{ product.id }}</td>
+                    <td>{{ product.title }}</td>
                     <td>{{ product.category }}</td>
                     <td>
                         {% for platform in platforms %}
@@ -42,5 +44,8 @@
             {% endfor %}
             </tbody>
         </table>
+{#            Pagination    #}
+        {{ pagination.display() }}
     </div>
 {% endblock %}
+
