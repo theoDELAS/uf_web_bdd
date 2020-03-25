@@ -45,7 +45,9 @@ class AppFixtures extends Fixture
             ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
             ->addUserRole($adminRole)
             ->setBalance(mt_rand(0, 1000))
-            ->setPanier($panier);
+            ->setPanier($panier)
+            ->setBirthday('19/03/1997');
+
         $manager->persist($adminUser);
 
         // Création des différentes catégories
@@ -110,6 +112,8 @@ class AppFixtures extends Fixture
 
             $hash = $this->encoder->encodePassword($user, 'password');
 
+            $birthday = $faker->date('d-m-Y');
+
             $user->setFirstName($faker->firstName($genre))
                 ->setLastName($faker->lastName)
                 ->setEmail($faker->email)
@@ -118,7 +122,8 @@ class AppFixtures extends Fixture
                 ->setHash($hash)
                 ->setPicture($picture)
                 ->setBalance(mt_rand(0, 1000))
-                ->setPanier($panier);
+                ->setPanier($panier)
+                ->setBirthday($birthday);
 
             $manager->persist($user);
             $users[] = $user;

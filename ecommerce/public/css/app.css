@@ -4,6 +4,12 @@
     border-radius: 50%;
 }
 
+.avatar-medium {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+
 .avatar-mini {
     border-radius: 50%;
     max-width: 24px;
@@ -29,7 +35,7 @@
 
 
 
-
+/* Gestion du panier dans la navbar (dropdown) */
 
 #dropdown-cart{
     float:right;

@@ -109,6 +109,12 @@ class User implements UserInterface
      */
     private $panier;
 
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\Regex(pattern="/(\d+)\/(\d+)\/(\d{4})/", message="Merci de renseigner un format de date valide")
+     */
+    private $birthday;
+
 
     /**
      * Permet d'initialiser le slug (ne pas oublier de dire a la classe ... ligne 15 callbacks)
@@ -390,6 +396,18 @@ class User implements UserInterface
     public function setPanier(?Panier $panier): self
     {
         $this->panier = $panier;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?string
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(string $birthday): self
+    {
+        $this->birthday = $birthday;
 
         return $this;
     }
