@@ -19,9 +19,9 @@ class StatsService
         $products = $this->getProductsCount();
         $comments = $this->getCommentsCount();
         $ps4 = $this->getPLaystationCount();
-        $xbox = $this->getPLaystationCount();
-        $pc = $this->getPLaystationCount();
-        $stadia = $this->getPLaystationCount();
+        $xbox = $this->getXboxCount();
+        $pc = $this->getPcCount();
+        $stadia = $this->getStadiaCount();
 
         return compact('users', 'products', 'comments', 'ps4', 'xbox', 'pc', 'stadia');
     }
