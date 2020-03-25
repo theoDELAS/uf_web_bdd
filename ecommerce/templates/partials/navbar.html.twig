@@ -12,7 +12,7 @@
             <li class="nav-item">
                 <a class="nav-link mr-3" href="{{ path('product_index') }}">Jeux vidéos</a>
             </li>
-            <li class="nav-item dropdown mr-3">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catégories</a>
                 <div class="dropdown-menu">
                     {% for category in categories %}
@@ -32,10 +32,42 @@
         <ul class="navbar-nav ml-auto">
             {% if app.user %}
                 <li class="nav-item dropdown mr-5">
-                    <span class="nav-link dropdown-toggle">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="cartDropdownLink">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        {{ app.user.panier.product | length }}
-                    </span>
+                        <span class="badge badge-pill badge-danger">{{ app.user.panier.product | length }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-cart" role="menu" aria-labelledby="cartDropdownLink">
+                        <div class="row total-header-section">
+                            <div class="col-lg-6 col-sm-6 col-6">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ app.user.panier.product | length }}</span>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                                <p>Total: <span class="text-info">{{ app.user.panier.amount }}&euro;</span></p>
+                            </div>
+                        </div>
+                         {% for product in app.user.panier.product %}
+                            <div class="row cart-detail">
+                                <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                    <img src="{{ product.coverImage }}">
+                                </div>
+                                <div class="col-lg-5 col-sm-5 col-5 cart-detail-product">
+                                    <p>{{ product.title }}</p>
+                                    <span class="price text-info"> {{ product.price }}&euro;</span> <span class="count"> Quantité : 1</span>
+                                </div>
+                                <div class="col-lg-3 col-sm-3 col-3 cart-detail-product">
+                                    <a href="{{ path('panier_delete', {'id': product.id}) }}" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                <a href="{{ path('panier_index') }}" class="btn btn-primary btn-block text-white">Voir mon panier</a>
+                            </div>
+                        </div>
+                    </ul>
+
                 </li>
                 <li class="nav-item mr-5">
                     <span href="#" class="navbar-text">Mon solde : {{ app.user.balance }} &euro;</span>
@@ -44,19 +76,15 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink">
                         <img src="{{ app.user.picture }}" class="avatar avatar-mini" alt="Avatar de {{ app.user.firstName }}"> {{ app.user.firstName }}
                     </a>
-
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
-{#                        <a href="{{ path('product_create') }}" class="dropdown-item">Ajouter un jeu</a>#}
-{#                        <div class="dropdown-divider"></div>#}
                         <a href="{{ path('account_index') }}" class="dropdown-item">Mon compte</a>
-                        <a href="{{ path('panier_index') }}" class="dropdown-item">Mon panier</a>
                         <div class="dropdown-divider"></div>
-{#                        <a href="#" class="dropdown-item">Mes jeux en vente</a>#}
                         <a href="{{ path('account_profile') }}" class="dropdown-item">Modifier mon profil</a>
                         <a href="{{ path('account_password') }}" class="dropdown-item">Modifier mon mot de passe</a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ path('account_logout') }}" class="dropdown-item">Déconnexion</a>
                     </div>
+
                 </li>
             {% else %}
                 <li class="nav-item">

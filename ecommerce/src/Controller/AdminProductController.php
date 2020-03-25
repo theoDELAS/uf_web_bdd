@@ -60,7 +60,7 @@ class AdminProductController extends AbstractController
      *
      * @Route("/admin/product/{id}/delete", name="admin_product_delete")
      *
-     * @param Product $ad
+     * @param Product $product
      * @param EntityManagerInterface $manager
      * @return Response
      */
