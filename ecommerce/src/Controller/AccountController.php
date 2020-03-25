@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Panier;
 use App\Entity\PasswordUpdate;
 use App\Entity\User;
 use App\Form\AccountType;
 use App\Form\PasswordUpdateType;
 use App\Form\RegistrationType;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -57,7 +59,7 @@ class AccountController extends AbstractController
      * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager)
     {
         $user =  new User();
 
@@ -69,8 +71,12 @@ class AccountController extends AbstractController
         {
             $hash = $encoder->encodePassword($user, $user->getHash());
             $user->setHash($hash);
+            $panier = new Panier();
+            $panier->setAmount(0);
+            $manager->persist($panier);
+            $user->setPanier($panier);
+            $user->setBalance(0);
 
-            $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
             $manager->flush();
 

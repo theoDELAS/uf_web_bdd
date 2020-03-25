@@ -3,13 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Image;
-use App\Entity\Panier;
 use App\Entity\Product;
 use App\Form\CommentType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
-use Doctrine\DBAL\Types\IntegerType;
+use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -20,13 +18,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product", name="product_index")
+     * @Route("/product/{page<\d+>?1}", name="product_index")
      */
-    public function index(ProductRepository $product)
+    public function index(ProductRepository $product, $page, PaginationService $pagination)
     {
-        $products = $product->findAll();
+        $pagination->setEntityClass(Product::class)
+                    ->setPage($page);
+
         return $this->render('product/index.html.twig', [
-            'products' => $products
+            'pagination' => $pagination
         ]);
     }
 

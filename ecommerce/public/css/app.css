@@ -31,7 +31,7 @@
 
 
 
-.dropdown{
+#dropdown-cart{
     float:right;
     padding-right: 30px;
 }
@@ -40,7 +40,7 @@
     margin:10px 0px;
     box-shadow:none !important;
 }
-.dropdown .dropdown-menu{
+#dropdown-cart .dropdown-menu{
     padding:20px;
     top:30px !important;
     width:350px !important;
