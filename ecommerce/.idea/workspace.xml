@@ -155,7 +155,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Projets Perso/symbnb" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -207,7 +207,9 @@
       <workItem from="1584520507933" duration="685000" />
       <workItem from="1584521833039" duration="15988000" />
       <workItem from="1585037864228" duration="9467000" />
-      <workItem from="1585127998658" duration="21856000" />
+      <workItem from="1585127998658" duration="22234000" />
+      <workItem from="1585309290215" duration="412000" />
+      <workItem from="1585556989651" duration="8641000" />
     </task>
     <servers />
   </component>
@@ -224,9 +226,10 @@
     </state>
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585152942997" />
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584441162930" />
-    <state x="518" y="208" key="FileChooserDialogImpl" timestamp="1584520592344">
+    <state x="518" y="208" key="FileChooserDialogImpl" timestamp="1585565166892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="518" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585565166892" />
     <state x="518" y="208" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584520592344" />
     <state x="776" y="441" key="NewPhpFileDialog" timestamp="1584442428824">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -240,15 +243,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="454" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585046622803" />
-    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1584526523468">
+    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1585558200514">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584526523468" />
+    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585558200514" />
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584437432919" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585153990477">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585561807803">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585153990477" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585561807803" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584435793411" />
   </component>
 </project>

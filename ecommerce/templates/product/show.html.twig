@@ -77,10 +77,29 @@
                     {{ form_start(form) }}
                     <h3>Laissez votre avis sur ce jeu</h3>
                     {{ form_widget(form) }}
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-check"></i>
-                        Valider
-                    </button>
+                    {# Si connecté #}
+                    {% if app.user %}
+                        {% set comment = product.getCommentFromAuthor(app.user) %}
+                        {% if comment is not null %}
+                            <div class="text-success my-3">
+                                <i class="fas fa-check"></i>
+                                Vous avez déjà donné votre avis concernant ce produit
+                            </div>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check"></i>
+                                Valider
+                            </button>
+                        {% endif %}
+
+                    {# Si non connecté #}
+                    {% else %}
+                        <div class="text-danger my-3">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Vous devez etre connecté à votre compte pour pouvoir laisser un commentaire
+                        </div>
+                    {% endif %}
+
                     {{ form_end(form) }}
                 </div>
             </div>

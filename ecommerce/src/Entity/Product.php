@@ -98,6 +98,20 @@ class Product
     }
 
     /**
+     * Permet de récupérer le commentaire d'un auteur par rapport à un produit
+     *
+     * @param User $author
+     * @return Comment|null
+     */
+    public function getCommentFromAuthor(User $author) {
+        foreach ($this->comments as $comment) {
+            if($comment->getAuthor() === $author) return $comment;
+        }
+        return null;
+    }
+
+
+    /**
      * Permt d'obtenir la moyenne globale des notes pour cette annonce
      *
      * @param ArrayCollection $comments

@@ -6,9 +6,12 @@ use App\Entity\Comment;
 use App\Entity\Product;
 use App\Form\CommentType;
 use App\Form\ProductType;
+use App\Repository\CommentRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
+use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,10 +66,12 @@ class ProductController extends AbstractController
      * @param Product $product
      * @return Response
      */
-    public function show(Product $product, Request $request, EntityManagerInterface $manager)
+    public function show(Product $product, Request $request, EntityManagerInterface $manager, UserRepository $repo)
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
+
+
 
         $form->handleRequest($request);
 
@@ -87,7 +92,6 @@ class ProductController extends AbstractController
                 'slug' => $product->getSlug()
             ]);
         }
-
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
