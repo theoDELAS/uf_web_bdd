@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Historical;
 use App\Entity\Panier;
 use App\Entity\PasswordUpdate;
 use App\Entity\User;
@@ -197,4 +198,23 @@ class AccountController extends AbstractController
             'user' => $this->getUser()
         ]);
     }
+
+    /**
+     *Permet d'afficher l'historique des achats de l'user connecté
+     *
+     * @Route("/account/historical", name="account_historical")
+     * @IsGranted("ROLE_USER")
+     *
+     */
+    public function myHistorical()
+    {
+        $historicals = $this->getUser()->getHistoricals()->getValues();
+
+        return $this->render('account/historical.html.twig', [
+            'user' => $this->getUser(),
+            'historicals' => $historicals
+        ]);
+    }
+
+
 }

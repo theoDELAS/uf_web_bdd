@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Historical;
+use App\Entity\Panier;
 use App\Entity\Product;
+use App\Form\HistoricalType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -48,5 +52,56 @@ class PanierController extends AbstractController
 
 
         return $this->redirectToRoute('panier_index');
+    }
+
+    /**
+     * @Route("/panier/{id}/validate", name="panier_validate")
+     */
+    public function validatePanier(Request $request, EntityManagerInterface $manager)
+    {
+        $panier = $this->getUser()->getPanier();
+        $historical = new Historical();
+        $user = $this->getUser();
+
+        $form = $this->createForm(HistoricalType::class, $historical);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            // fait payer le user
+            $newBalance = $user->getBalance() - $panier->getAmount();
+            $user->buy($panier);
+            $manager->persist($user);
+
+            // associe l'historique a l'user
+            $historical->setUser($user);
+            $manager->persist($historical);
+
+            // ajoute le prix du panier a l'historique
+            $historical->setAmount($panier->getAmount());
+            // ajoute chaque produit du panier dans l'historique, supprime ensuite le produit du panier, modifie le prix du panier
+            foreach ($panier->getProduct()->getValues() as $product) {
+                $historical->addProduct($product);
+                $panier->removeProduct($product);
+                $panier->setAmount($panier->getAmount() - $product->getPrice());
+                $manager->persist($panier);
+                $manager->persist($historical);
+            }
+
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Votre commande a bien été effectuée, vous devriez recevoir un mail sous peu"
+            );
+
+            return $this->redirectToRoute('panier_index');
+        }
+
+        return $this->render('panier/validate.html.twig', [
+            'panier' => $panier,
+            'form' => $form->createView()
+        ]);
     }
 }

@@ -115,6 +115,10 @@ class User implements UserInterface
      */
     private $birthday;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Historical", mappedBy="user")
+     */
+    private $historicals;
 
     /**
      * Permet d'initialiser le slug (ne pas oublier de dire a la classe ... ligne 15 callbacks)
@@ -137,6 +141,7 @@ class User implements UserInterface
         $this->comments = new ArrayCollection();
         $this->userRoles = new ArrayCollection();
         $this->paniers = new ArrayCollection();
+        $this->historicals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -408,6 +413,43 @@ class User implements UserInterface
     public function setBirthday(string $birthday): self
     {
         $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function buy(Panier $panier) {
+        if ($this->getBalance() >= $panier->getAmount()) {
+            $this->setBalance($this->getBalance() - $panier->getAmount());
+        }
+    }
+
+    /**
+     * @return Collection|Historical[]
+     */
+    public function getHistoricals(): Collection
+    {
+        return $this->historicals;
+    }
+
+    public function addHistorical(Historical $historical): self
+    {
+        if (!$this->historicals->contains($historical)) {
+            $this->historicals[] = $historical;
+            $historical->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistorical(Historical $historical): self
+    {
+        if ($this->historicals->contains($historical)) {
+            $this->historicals->removeElement($historical);
+            // set the owning side to null (unless already changed)
+            if ($historical->getUser() === $this) {
+                $historical->setUser(null);
+            }
+        }
 
         return $this;
     }

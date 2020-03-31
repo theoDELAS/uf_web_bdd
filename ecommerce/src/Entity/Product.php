@@ -73,12 +73,18 @@ class Product
      */
     private $paniers;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Historical", mappedBy="products")
+     */
+    private $historicals;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->platform = new ArrayCollection();
         $this->platforms = new ArrayCollection();
         $this->paniers = new ArrayCollection();
+        $this->historicals = new ArrayCollection();
     }
 
 
@@ -299,6 +305,34 @@ class Product
         if ($this->paniers->contains($panier)) {
             $this->paniers->removeElement($panier);
             $panier->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Historical[]
+     */
+    public function getHistoricals(): Collection
+    {
+        return $this->historicals;
+    }
+
+    public function addHistorical(Historical $historical): self
+    {
+        if (!$this->historicals->contains($historical)) {
+            $this->historicals[] = $historical;
+            $historical->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistorical(Historical $historical): self
+    {
+        if ($this->historicals->contains($historical)) {
+            $this->historicals->removeElement($historical);
+            $historical->removeProduct($this);
         }
 
         return $this;

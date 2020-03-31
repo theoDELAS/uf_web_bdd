@@ -97,6 +97,7 @@ class ProductController extends AbstractController
             'product' => $product,
             'category' => $product->getCategory(),
             'platforms' => $product->getPlatforms()->getValues(),
+            'comments' => $product->getComments()->getValues(),
             'form' => $form->createView()
         ]);
     }

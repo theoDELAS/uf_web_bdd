@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-    <list default="true" id="26a84a16-0ef7-4913-9369-4a152f32c52a" name="Default Changelist" comment="" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/ecommerce/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/ecommerce/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/ecommerce/vendor/phpdocumentor/reflection-docblock" />
@@ -133,63 +117,5 @@
       <path value="$PROJECT_DIR$/ecommerce/vendor/symfony/swiftmailer-bundle" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1Y1pU0M8IiUhNFIzw9q5rv21Ra8" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="26a84a16-0ef7-4913-9369-4a152f32c52a" name="Default Changelist" comment="" />
-      <created>1582119966154</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1582119966154</updated>
-      <workItem from="1582119967441" duration="258000" />
-      <workItem from="1585638382042" duration="11571000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585645354382">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585645354382" />
-    <state x="1220" y="277" key="FileChooserDialogImpl" timestamp="1582120224119">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1220" y="277" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582120224119" />
-    <state x="564" y="333" width="646" height="532" key="find.popup" timestamp="1585648603488">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="564" y="333" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585648603488" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585650417223">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585650417223" />
-  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
 </project>

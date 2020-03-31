@@ -26,18 +26,10 @@
                             </h4>
                         </div>
                         <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                            <div class="col-7 col-sm-7 col-md-8 text-md-right" style="padding-top: 5px">
                                 <h6><strong>{{ product.price }}&euro; <span class="text-muted">x</span></strong></h6>
                             </div>
-                            <div class="col-4 col-sm-4 col-md-4">
-                                <div class="quantity">
-                                    <input type="button" value="+" class="plus">
-                                    <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                           size="4">
-                                    <input type="button" value="-" class="minus">
-                                </div>
-                            </div>
-                            <div class="col-2 col-sm-2 col-md-2 text-right">
+                            <div class="col-6 col-sm-6 col-md-4 text-right">
                                 <a href="{{ path('panier_delete', {'id': product.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
@@ -54,32 +46,13 @@
                     <div class="col-md-6">
                         Total : <b>{{ panier.amount }}&euro;</b>
                     </div>
-                    <div class="col-md-6">
-                        <a href="#" class="btn btn-success">Valider mon panier</a>
-                    </div>
+                    {% if panier.product is not empty %}
+                        <div class="col-md-6">
+                            <a href="{{ path('panier_validate', {'id': panier.id}) }}" class="btn btn-success">Valider mon panier</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-{#        <div class="alert alert-light">#}
-{#            <h2 class="my-3">Détails</h2>#}
-{#            <dl class="row">#}
-{#                {% for product in panier.product %}#}
-{#                    <dt class="col-md-4">Article n°{{ loop.index }}</dt>#}
-{#                    <dd class="col-md-8">{{ product.title }}</dd>#}
-{#                    <dt class="col-md-4">Prix</dt>#}
-{#                    <dd class="col-md-8">{{ product.price }}&euro;</dd>#}
-{#                {% endfor %}#}
-{#                <dt class="col-md-4">Nombre d'articles</dt>#}
-{#                <dd class="col-md-8">{{ panier.product | length }}</dd>#}
-{#                <dt class="col-md-4">Total</dt>#}
-{#                <dd class="col-md-8">{{ panier.amount }}&euro;</dd>#}
-{#            </dl>#}
-{#        </div>#}
     </div>
 {% endblock %}

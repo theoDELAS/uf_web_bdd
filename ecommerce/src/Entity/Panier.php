@@ -116,4 +116,21 @@ class Panier
 
         return $this;
     }
+
+    public function sendMail($name, \Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('send@example.com')
+            ->setTo('theo.delas@gmail.com')
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'emails/registration.html.twig',
+                    ['name' => $name]
+                ),
+                'text/html'
+            );
+
+        $mailer->send($message);
+    }
 }
