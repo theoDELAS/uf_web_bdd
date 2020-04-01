@@ -63,13 +63,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(min=10, minMessage="Votre introdution doit faire au minimum 10 caractères")
      */
     private $introduction;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Assert\Length(min=100, minMessage="Votre description doit faire au minimum 100 caractères")
      */
     private $description;
 
@@ -111,7 +109,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\Regex(pattern="/(\d+)\/(\d+)\/(\d{4})/", message="Merci de renseigner un format de date valide")
+     * @Assert\Regex(pattern="/(\d+)\/(\d+)\/(\d{4})/", message="Merci de renseigner un format de date valide jj/mm/AAAA")
      */
     private $birthday;
 

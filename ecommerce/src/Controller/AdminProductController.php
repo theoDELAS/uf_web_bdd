@@ -128,7 +128,6 @@ class AdminProductController extends AbstractController
             "L'annonce du jeu <strong>{$product->getTitle()}</strong> a bien été supprimée"
         );
 
-
         return $this->redirectToRoute('admin_product_index');
     }
 }

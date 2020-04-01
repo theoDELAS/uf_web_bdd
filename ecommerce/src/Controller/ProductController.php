@@ -65,8 +65,12 @@ class ProductController extends AbstractController
      */
     public function show(Product $product, Request $request, EntityManagerInterface $manager, UserRepository $repo)
     {
-        if ($repo->getUserProductComment($product, $this->getUser())) {
-            $comment = $repo->getUserProductComment($product, $this->getUser())[0];
+        if ($this->getUser()) {
+            if ($repo->getUserProductComment($product, $this->getUser())) {
+                $comment = $repo->getUserProductComment($product, $this->getUser())[0];
+            } else {
+                $comment = new Comment();
+            }
         } else {
             $comment = new Comment();
         }

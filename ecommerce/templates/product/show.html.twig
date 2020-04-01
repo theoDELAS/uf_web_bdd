@@ -24,13 +24,19 @@
                             <p>{{ product.price }} &euro;</p>
                         </blockquote>
                     </div>
-                    {% if app.user and product not in app.user.panier.product %}
-                        <div class="col-6">
-                            <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-success">Ajouter au panier</a>
-                        </div>
+                    {% if app.user  %}
+                        {% if product not in app.user.panier.product %}
+                            <div class="col-6">
+                                <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-success">Ajouter au panier</a>
+                            </div>
+                        {% else %}
+                            <div class="inCart w-25 mt-5 text-muted font-italic">
+                                Ce jeu est actuellement dans votre panier
+                            </div>
+                        {% endif %}
                     {% else %}
-                        <div class="inCart w-25 mt-5 text-muted font-italic">
-                            Ce jeu est actuellement dans votre panier
+                        <div class="w-25 mt-5 text-muted font-italic">
+                            <a href="{{ path('account_login') }}">Connectez-vous</a> ou <a href="{{ path('account_register') }}">inscrivez-vous</a> pour ajouter ce produit à votre panier
                         </div>
                     {% endif %}
                 </div>
@@ -60,7 +66,7 @@
                         </h4>
                     </div>
                     <div class="isBuy ml-auto text-muted font-italic my-3">
-                        <i class="fas fa-user-check"></i> : utilisateur ayant acheté le jeu sur ce site
+                        <i class="fas fa-user-check"></i> : Les commentaires possédant ce macaron sont des utilisateurs ayant acheté le jeu sur ce site
                     </div>
                     {% for comment in product.comments %}
                         <div class="bg-light rounded mb-3 py-3 px-3 d-flex flex-column">

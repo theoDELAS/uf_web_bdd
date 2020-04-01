@@ -73,7 +73,7 @@
 
                 </li>
                 <li class="nav-item mr-5">
-                    <span href="#" class="navbar-text">Mon solde : {{ app.user.balance }} &euro;</span>
+                    <a href="{{ path('account_restock') }}" class="navbar-text">Mon solde : {{ app.user.balance }} &euro;</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink">

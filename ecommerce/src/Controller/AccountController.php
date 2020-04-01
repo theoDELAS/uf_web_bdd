@@ -126,7 +126,7 @@ class AccountController extends AbstractController
         }
 
         return $this->render('account/profile.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -185,7 +185,7 @@ class AccountController extends AbstractController
 
 
     /**
-     *Permet d'afficher le profil de l'user connecté
+     * Permet d'afficher le profil de l'user connecté
      *
      * @Route("/account", name="account_index")
      * @IsGranted("ROLE_USER")
@@ -214,6 +214,23 @@ class AccountController extends AbstractController
             'user' => $this->getUser(),
             'historicals' => $historicals
         ]);
+    }
+
+    /**
+     * Permet de réapprovisionner son compte
+     *
+     * @Route("/account/balance", name="account_restock")
+     * @IsGranted("ROLE_USER")
+     *
+     */
+    public function restockAccount(EntityManagerInterface $manager)
+    {
+        $user = $this->getUser();
+        $user->setBalance($user->getBalance() + 100);
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirectToRoute('account_index');
     }
 
 
