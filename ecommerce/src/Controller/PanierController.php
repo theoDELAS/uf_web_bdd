@@ -35,7 +35,7 @@ class PanierController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function delete(Product $product, EntityManagerInterface $manager) {
+    public function delete(Request $request, Product $product, EntityManagerInterface $manager) {
         $panier = $this->getUser()->getPanier();
         $amount = $panier->getAmount();
 
@@ -51,7 +51,12 @@ class PanierController extends AbstractController
         );
 
 
-        return $this->redirectToRoute('panier_index');
+//        return $this->redirectToRoute('panier_index');
+        $request->getSession()
+            ->getFlashBag()
+            ->add('notice', 'success');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
     }
 
     /**

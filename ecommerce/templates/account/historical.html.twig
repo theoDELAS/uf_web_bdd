@@ -12,6 +12,12 @@
                 <dd class="col-md-8 pb-2">n°{{ historical.id }}</dd>
                 <dt class="col-md-4">Nombre d'article :</dt>
                 <dd class="col-md-8 pb-2">{{ historical.products | length }}</dd>
+                <dt class="col-md-4">Les articles :</dt>
+                <dd class="col-md-8 pb-2">
+                    {% for product in historical.products %}
+                        {{ product.title }} ({{ product.price }}&euro;){% if not loop.last %} / {% endif %}
+                    {% endfor %}
+                </dd>
                 <dt class="col-md-4">Montant total :</dt>
                 <dd class="col-md-8 pb-2">{{ historical.amount }}&euro;</dd>
                 <dt class="col-md-4">Acheté le :</dt>

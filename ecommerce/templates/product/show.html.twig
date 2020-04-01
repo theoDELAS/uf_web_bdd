@@ -5,13 +5,13 @@
 {% block body %}
     <div class="container py-5">
         <div class="row">
-            <div class="col-5">
+            <div class="col-lg-5">
                 <img src="{{ product.coverImage }}"  class="img-fluid rounded" alt="image du jeu {{ product.title }}">
             </div>
-            <div class="col-7">
+            <div class="col-lg-7">
                 <div class="row">
                     <div class="col-6">
-                        <h1 class="text-capitalize h2">{{ product.title }}</h1>
+                        <h1 class="text-capitalize h2 my-3">{{ product.title }}</h1>
                         <blockquote>
                             <p class="blockquote-footer">Catégorie : <a href="{{ path('category_index', {'id': category.id}) }}">{{ product.category.name }}</a></p>
                             <p class="blockquote-footer">Plateforme :
@@ -24,9 +24,13 @@
                             <p>{{ product.price }} &euro;</p>
                         </blockquote>
                     </div>
-                    {% if app.user %}
+                    {% if app.user and product not in app.user.panier.product %}
                         <div class="col-6">
                             <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-success">Ajouter au panier</a>
+                        </div>
+                    {% else %}
+                        <div class="inCart w-25 mt-5 text-muted font-italic">
+                            Ce jeu est actuellement dans votre panier
                         </div>
                     {% endif %}
                 </div>
@@ -39,7 +43,7 @@
         <hr class="my-3">
 
         <div class="row">
-            <div class="col-7">
+            <div class="col-lg-7">
                 {% if comments | length > 0 %}
                     <div class="alert alert-info">
                         <h4 class="alert-heading text-center">
@@ -55,16 +59,30 @@
                             </div>
                         </h4>
                     </div>
-
+                    <div class="isBuy ml-auto text-muted font-italic my-3">
+                        <i class="fas fa-user-check"></i> : utilisateur ayant acheté le jeu sur ce site
+                    </div>
                     {% for comment in product.comments %}
-                        <div class="bg-light rounded mb-3 py-3 px-3">
-                            <strong>{{ comment.author.firstName }}</strong> <em class="text-muted">le {{ comment.createdAt | date('d/m/Y')}}</em> :
+                        <div class="bg-light rounded mb-3 py-3 px-3 d-flex flex-column">
+                            <div class="d-flex">
+                                <div>
+                                    <strong>{{ comment.author.firstName }}</strong> <em class="text-muted">le {{ comment.createdAt | date('d/m/Y')}}</em> :
+                                </div>
+                                {% for productHist in inHistorical %}
+                                {% if productHist.mail == comment.author.email %}
+                                    <div class="isBuy ml-auto">
+                                        <i class="fas fa-user-check fa-2x"></i>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
                             <blockquote>
                                 {{ comment.content }}
                             </blockquote>
-
-                            <strong>Note : </strong>
-                            {% include 'partials/rating.html.twig' with {'rating' : comment.rating} %}
+                            <div>
+                                <strong>Note : </strong>
+                                {% include 'partials/rating.html.twig' with {'rating' : comment.rating} %}
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}
@@ -72,7 +90,7 @@
                 {% endif %}
 
             </div>
-            <div class="col-5">
+            <div class="col-lg-5">
                 <div class="bg-light rounded mb-3 py-3 px-3">
                     {{ form_start(form) }}
                     <h3>Laissez votre avis sur ce jeu</h3>
