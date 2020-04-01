@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -17,6 +18,14 @@ class UserRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
+    }
+
+    public function getUserProductComment(Product $product, User $user) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT c, p, a FROM App\Entity\Comment c JOIN c.product p JOIN c.author a WHERE p.id = '.$product->getId().' AND a.id = '.$user->getId()
+            )
+            ->getResult();
     }
 
     // /**

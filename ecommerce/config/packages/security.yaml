@@ -35,7 +35,6 @@ security:
             form_login:
                 login_path: account_login
                 check_path: account_login
-                default_target_path: redirectBack
 
             logout:
                 path: account_logout

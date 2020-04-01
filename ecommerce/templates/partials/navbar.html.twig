@@ -62,8 +62,11 @@
                             </div>
                         {% endfor %}
                         <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                <a href="{{ path('panier_index') }}" class="btn btn-primary small btn-block text-white">Voir mon panier</a>
+                            <div class="col-lg-6 col-sm-6 col-6 text-center checkout">
+                                <a href="{{ path('panier_index') }}" class="btn btn-primary w-100 text-white">Voir</a>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 col-6 text-center checkout">
+                                <a href="{{ path('panier_validate', {'id': app.user.panier.id}) }}" class="btn btn-success w-100 text-white">Valider</a>
                             </div>
                         </div>
                     </ul>

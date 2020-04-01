@@ -6,7 +6,6 @@ use App\Entity\Comment;
 use App\Entity\Product;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
-use App\Repository\HistoricalRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use App\Service\PaginationService;
@@ -64,9 +63,14 @@ class ProductController extends AbstractController
      * @param Product $product
      * @return Response
      */
-    public function show(Product $product, Request $request, EntityManagerInterface $manager, CommentRepository $repo)
+    public function show(Product $product, Request $request, EntityManagerInterface $manager, UserRepository $repo)
     {
-        $comment = new Comment();
+        if ($repo->getUserProductComment($product, $this->getUser())) {
+            $comment = $repo->getUserProductComment($product, $this->getUser())[0];
+        } else {
+            $comment = new Comment();
+        }
+
 
         $form = $this->createForm(CommentType::class, $comment);
 

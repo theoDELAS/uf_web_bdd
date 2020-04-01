@@ -97,18 +97,18 @@
                     {{ form_widget(form) }}
                     {# Si connecté #}
                     {% if app.user %}
-                        {% set comment = product.getCommentFromAuthor(app.user) %}
-                        {% if comment is not null %}
-                            <div class="text-success my-3">
-                                <i class="fas fa-check"></i>
-                                Vous avez déjà donné votre avis concernant ce produit
-                            </div>
-                        {% else %}
+{#                        {% set comment = product.getCommentFromAuthor(app.user) %}#}
+{#                        {% if comment is not null %}#}
+{#                            <div class="text-success my-3">#}
+{#                                <i class="fas fa-check"></i>#}
+{#                                Vous avez déjà donné votre avis concernant ce produit#}
+{#                            </div>#}
+{#                        {% else %}#}
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-check"></i>
                                 Valider
                             </button>
-                        {% endif %}
+{#                        {% endif %}#}
 
                     {# Si non connecté #}
                     {% else %}

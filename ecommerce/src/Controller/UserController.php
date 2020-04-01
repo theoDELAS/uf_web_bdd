@@ -17,18 +17,4 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
-
-    /**
-     * @Route("/", name="redirectBack")
-     */
-    public function redirectBack(Request $request)
-    {
-        $request->getSession()
-            ->getFlashBag()
-            ->add('notice', 'success');
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer);
-    }
-
-
 }
