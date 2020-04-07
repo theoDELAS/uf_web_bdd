@@ -50,8 +50,6 @@ class PanierController extends AbstractController
             "Le jeu <strong>{$product->getTitle()}</strong> a bien été supprimée de votre panier"
         );
 
-
-//        return $this->redirectToRoute('panier_index');
         $request->getSession()
             ->getFlashBag()
             ->add('notice', 'success');
@@ -62,7 +60,7 @@ class PanierController extends AbstractController
     /**
      * @Route("/panier/{id}/validate", name="panier_validate")
      */
-    public function validatePanier(Request $request, EntityManagerInterface $manager)
+    public function validatePanier(Request $request, EntityManagerInterface $manager, \Swift_Mailer $mailer)
     {
         $panier = $this->getUser()->getPanier();
         $user = $this->getUser();

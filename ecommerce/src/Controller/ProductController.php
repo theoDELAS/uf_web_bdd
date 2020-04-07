@@ -26,7 +26,7 @@ class ProductController extends AbstractController
                     ->setPage($page);
 
         return $this->render('product/index.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
         ]);
     }
 

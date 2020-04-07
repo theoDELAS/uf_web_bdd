@@ -11,23 +11,53 @@
         <p class="text-center alert alert-info mt-4">Il y'a actuellement <u>{{ category.product | length }} jeux</u> en vente dans cette catégorie</p>
         <div class="row">
             {% for product in category.product %}
-                <div class="col-md-4 mb-3">
-                    <div class="card mx-auto mt-5">
-                        <img class="card-img-top" src="{{ product.coverImage }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 class="card-title text-center text-capitalize">{{ product.title }}</h3>
-                            <p class="card-text lead">{{ product.description }}</p>
-                            <div class="d-flex justify-content-around py-3">
-                                <p class="card-text font-weight-bold">{{ product.price }}€</p>
-                                {% if product.comments | length > 0 %}
-                                    {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
-                                {% else %}
-                                    <p>Pas encore noté</p>
-                                {% endif %}
-                            </div>
-                            <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
-                        </div>
-                    </div>
+                <div class="card card-product-list p-3 mb-4">
+                    <div class="row no-gutters">
+                        <aside class="col-md-3">
+                            <img src="{{product.coverImage}}">
+                        </aside> <!-- col.// -->
+                        <div class="col-md-6 px-5">
+                            <div class="info-main border-right mr-4">
+                                <h3 class="title text-capitalize">{{ product.title }}</h3>
+                                <div class="row">
+                                    <div class="col-md-6 pt-3 blockquote text-muted display-4">
+                                        <p class="blockquote-footer">Catégorie : <a href="{{ path('category_index', {'id': product.category.id}) }}">{{ product.category.name }}</a></p>
+                                        <p class="blockquote-footer">Plateforme{% if product.platforms | length > 1 %}s{% endif %} :
+                                            {% for platform in product.platforms %}
+                                                <a href="{{ path('platform_index', {'id': platform.id}) }}">
+                                                    {{ platform.name }}
+                                                </a>
+                                                {% if not loop.last %}/{% endif %}
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {% if product.comments | length > 0 %}
+                                            {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
+                                        {% else %}
+                                            <p>Pas encore noté</p>
+                                        {% endif %}
+                                    </div> <!-- rating-wrap.// -->
+                                </div>
+
+                                <p class="pr-5">{{ product.description }}</p>
+                            </div> <!-- info-main.// -->
+                        </div> <!-- col.// -->
+                        <aside class="col-sm-3">
+                            <div class="info-aside">
+                                <div class="price-wrap">
+                                    <span class="price h4">{{ product.price }}&euro;</span>
+                                </div> <!-- info-price-detail // -->
+                                <br>
+                                <p>
+                                    <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
+                                    <a href="#" class="btn btn-light btn-block"><i class="fa fa-heart"></i>
+                                        <span class="text">Add to wishlist</span>
+                                    </a>
+                                </p>
+                            </div> <!-- info-aside.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
                 </div>
             {% endfor %}
             {% endif %}

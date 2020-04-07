@@ -131,7 +131,7 @@ class AppFixtures extends Fixture
 
          // Génere des produits fake
         for ($i = 0; $i < 20; $i++) {
-            $coverImage = "https://picsum.photos/id/".mt_rand(1, 500)."/750/350";
+            $coverImage = "https://picsum.photos/id/".mt_rand(1, 500)."/250/200";
 
             $user = $users[mt_rand(0, count($users) - 1)];
 

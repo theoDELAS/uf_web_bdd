@@ -7,7 +7,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/ecommerce/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -142,7 +142,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ecommerce" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -168,6 +168,7 @@
       <updated>1582119966154</updated>
       <workItem from="1582119967441" duration="258000" />
       <workItem from="1585638382042" duration="11851000" />
+      <workItem from="1586255097676" duration="13000" />
     </task>
     <servers />
   </component>
@@ -179,9 +180,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585645354382" />
-    <state x="1220" y="277" key="FileChooserDialogImpl" timestamp="1582120224119">
+    <state x="1220" y="277" key="FileChooserDialogImpl" timestamp="1586255109716">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1220" y="277" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586255109716" />
     <state x="1220" y="277" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582120224119" />
     <state x="564" y="333" width="646" height="532" key="find.popup" timestamp="1585648603488">
       <screen x="0" y="0" width="1920" height="1040" />
