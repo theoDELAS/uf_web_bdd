@@ -78,6 +78,11 @@ class Product
      */
     private $historicals;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Favorite", mappedBy="product")
+     */
+    private $favorites;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -85,6 +90,7 @@ class Product
         $this->platforms = new ArrayCollection();
         $this->paniers = new ArrayCollection();
         $this->historicals = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
     }
 
 
@@ -333,6 +339,34 @@ class Product
         if ($this->historicals->contains($historical)) {
             $this->historicals->removeElement($historical);
             $historical->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Favorite[]
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(Favorite $favorite): self
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites[] = $favorite;
+            $favorite->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Favorite $favorite): self
+    {
+        if ($this->favorites->contains($favorite)) {
+            $this->favorites->removeElement($favorite);
+            $favorite->removeProduct($this);
         }
 
         return $this;

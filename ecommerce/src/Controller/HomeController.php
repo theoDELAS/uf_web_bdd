@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Form\SearchType;
 use App\Repository\CategoryRepository;
 use App\Repository\PlatformRepository;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -33,7 +37,7 @@ class HomeController extends AbstractController
         );
     }
 
-    public function navBar()
+    public function navBar(EntityManagerInterface $manager, ProductRepository $repo, Request $request)
     {
         return $this->render('partials/navbar.html.twig', [
             'categories' => $this->categoryRepository->findAll(),

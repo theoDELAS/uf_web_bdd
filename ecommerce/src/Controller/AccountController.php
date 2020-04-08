@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Historical;
+use App\Entity\Favorite;
 use App\Entity\Panier;
 use App\Entity\PasswordUpdate;
 use App\Entity\User;
@@ -77,6 +77,10 @@ class AccountController extends AbstractController
             $manager->persist($panier);
             $user->setPanier($panier);
             $user->setBalance(0);
+            $favorite = new Favorite();
+            $manager->persist($favorite);
+            $user->setFavorite($favorite);
+
 
             $manager->persist($user);
             $manager->flush();
@@ -213,6 +217,16 @@ class AccountController extends AbstractController
         return $this->render('account/historical.html.twig', [
             'user' => $this->getUser(),
             'historicals' => $historicals
+        ]);
+    }
+
+    /**
+     * @Route("/favorite", name="account_favorite")
+     */
+    public function myFavoriteList()
+    {
+        return $this->render('favorite/index.html.twig', [
+            'favoriteList' => $this->getUser()->getFavorite()
         ]);
     }
 

@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Product;
 use App\Form\CommentType;
-use App\Repository\CommentRepository;
+use App\Form\SearchType;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use App\Service\PaginationService;
@@ -33,11 +33,13 @@ class ProductController extends AbstractController
 
 
     /**
+     * Ajoute le produit au panier de l'user connecté
+     *
      * @Route("/product/{slug}/add", name="product_add")
      * @param Product $product
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addPanier(Product $product, EntityManagerInterface $manager)
+    public function addPanier(Product $product, EntityManagerInterface $manager, Request $request)
     {
         $panier = $this->getUser()->getPanier();
         $amount = $panier->getAmount();
@@ -53,9 +55,37 @@ class ProductController extends AbstractController
             'success',
             "Le jeu <strong>{$product->getTitle()}</strong> a bien été ajouté à votre panier"
         );
-        return $this->redirectToRoute('product_show', [
-            'slug' => $product->getSlug()
-        ]);
+
+        $request->getSession();
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+    }
+
+    /**
+     * Ajoute le produit à la liste des favoris de l'user connecté
+     *
+     * @Route("/product/{id}/addFavorite", name="product_add_favorite")
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addFavorite(Product $product, EntityManagerInterface $manager, Request $request)
+    {
+        $favorite = $this->getUser()->getFavorite();
+
+        $favorite->addProduct($product);
+
+        $manager->persist($favorite);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "Le jeu <strong>{$product->getTitle()}</strong> a bien été ajouté à votre liste de favoris"
+        );
+        $request->getSession()
+            ->getFlashBag()
+            ->add('notice', 'success');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
     }
 
     /**

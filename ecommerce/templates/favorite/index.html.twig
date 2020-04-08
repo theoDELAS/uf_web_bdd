@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes favoris{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center py-5">Votre liste de jeux favoris</h1>
+        {% if favoriteList.product | length > 0 %}
+            {% for product in favoriteList.product %}
+                <div class="card card-product-list p-3 mb-4">
+                    <div class="row no-gutters">
+                        <aside class="col-md-3">
+                            <img src="{{product.coverImage}}">
+                        </aside> <!-- col.// -->
+                        <div class="col-md-6 px-4">
+                            <div class="info-main border-right mr-4">
+                                <h3 class="title text-capitalize">{{ product.title }}</h3>
+                                <div class="row">
+                                    <div class="col-md-6 pt-3 blockquote text-muted display-4">
+                                        <p class="blockquote-footer">Catégorie : <a href="{{ path('category_index', {'id': product.category.id}) }}">{{ product.category.name }}</a></p>
+                                        <p class="blockquote-footer">Plateforme{% if product.platforms | length > 1 %}s{% endif %} :
+                                            {% for platform in product.platforms %}
+                                                <a href="{{ path('platform_index', {'id': platform.id}) }}">
+                                                    {{ platform.name }}
+                                                </a>
+                                                {% if not loop.last %}/{% endif %}
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                    <div class="rating-wrap my-4 col-md-6">
+                                        {% if product.comments | length > 0 %}
+                                            {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
+                                        {% else %}
+                                            <p>Pas encore noté</p>
+                                        {% endif %}
+                                    </div> <!-- rating-wrap.// -->
+                                </div>
+
+                                <p class="text-justify pr-5">{{ product.description }}</p>
+                            </div> <!-- info-main.// -->
+                        </div> <!-- col.// -->
+                        <aside class="col-sm-3">
+                            <div class="info-aside">
+                                <div class="price-wrap">
+                                    <span class="price h4">{{ product.price }}&euro;</span>
+                                </div> <!-- info-price-detail // -->
+                                <br>
+                                <p>
+                                    <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>
+                                    <a href="{{ path('favorite_delete', {'id': product.id}) }}" class="btn btn-light btn-block"><i class="fa fa-heart"></i>
+                                        <span class="text">Retirer des favoris</span>
+                                    </a>
+                                </p>
+                            </div> <!-- info-aside.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info text-center">
+                <h3>Votre liste est vide</h3>
+                <a href="{{ path('product_index') }}">Consultez nos jeux en vente actuellement</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

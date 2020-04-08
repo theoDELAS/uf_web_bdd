@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Historical;
-use App\Entity\Panier;
 use App\Entity\Product;
 use App\Form\HistoricalType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,14 +49,13 @@ class PanierController extends AbstractController
             "Le jeu <strong>{$product->getTitle()}</strong> a bien été supprimée de votre panier"
         );
 
-        $request->getSession()
-            ->getFlashBag()
-            ->add('notice', 'success');
+        $request->getSession();
         $referer = $request->headers->get('referer');
         return $this->redirect($referer);
     }
 
     /**
+     * Permet de valider son panier et de payer
      * @Route("/panier/{id}/validate", name="panier_validate")
      */
     public function validatePanier(Request $request, EntityManagerInterface $manager, \Swift_Mailer $mailer)

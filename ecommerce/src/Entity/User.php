@@ -119,6 +119,16 @@ class User implements UserInterface
     private $historicals;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Favorite", inversedBy="user")
+     */
+    private $product;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Favorite", inversedBy="user")
+     */
+    private $favorite;
+
+    /**
      * Permet d'initialiser le slug (ne pas oublier de dire a la classe ... ligne 15 callbacks)
      *
      * @ORM\PrePersist
@@ -455,5 +465,17 @@ class User implements UserInterface
     public function __toString()
     {
         return(string) $this->name;
+    }
+
+    public function getFavorite(): ?Favorite
+    {
+        return $this->favorite;
+    }
+
+    public function setFavorite(?Favorite $favorite): self
+    {
+        $this->favorite = $favorite;
+
+        return $this;
     }
 }

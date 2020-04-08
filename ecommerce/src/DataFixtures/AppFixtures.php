@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Comment;
+use App\Entity\Favorite;
 use App\Entity\Panier;
 use App\Entity\Platform;
 use App\Entity\Product;
@@ -32,6 +33,9 @@ class AppFixtures extends Fixture
         $adminRole->setTitle('ROLE_ADMIN');
         $manager->persist($adminRole);
 
+        $favorite = new Favorite();
+        $manager->persist($favorite);
+
         $adminUser = new User();
         $panier = new Panier();
         $panier->setAmount(0);
@@ -46,7 +50,8 @@ class AppFixtures extends Fixture
             ->addUserRole($adminRole)
             ->setBalance(mt_rand(0, 1000))
             ->setPanier($panier)
-            ->setBirthday('19/03/1997');
+            ->setBirthday('19/03/1997')
+            ->setFavorite($favorite);
 
         $manager->persist($adminUser);
 
@@ -103,6 +108,9 @@ class AppFixtures extends Fixture
             $panier->setAmount(0);
             $manager->persist($panier);
 
+            $favorite = new Favorite();
+            $manager->persist($favorite);
+
             $genre = $faker->randomElement($genres);
 
             $picture = 'https://randomuser.me/portraits/';
@@ -123,7 +131,9 @@ class AppFixtures extends Fixture
                 ->setPicture($picture)
                 ->setBalance(mt_rand(0, 1000))
                 ->setPanier($panier)
-                ->setBirthday($birthday);
+                ->setBirthday($birthday)
+                ->setFavorite($favorite);
+
 
             $manager->persist($user);
             $users[] = $user;
