@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Product;
+use App\Entity\Search;
 use App\Form\CommentType;
 use App\Form\SearchType;
 use App\Repository\ProductRepository;
@@ -20,13 +21,32 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/{page<\d+>?1}", name="product_index")
      */
-    public function index(ProductRepository $product, $page, PaginationService $pagination)
+    public function index(ProductRepository $product, $page, PaginationService $pagination, Request $request)
     {
+        $search = new Search();
+        $form = $this->createForm(SearchType::class, $search);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            if ($product->findBy(['title' => $form->getData()->getSearch()])) {
+                return $this->redirectToRoute('product_show', [
+                    'slug' => $form->getData()->getSearch()
+                ]);
+            } else {
+                $this->addFlash(
+                    'danger',
+                    "Le jeu que vous cherchez n'existe pas"
+                );
+            }
+        }
+
         $pagination->setEntityClass(Product::class)
                     ->setPage($page);
 
         return $this->render('product/index.html.twig', [
             'pagination' => $pagination,
+            'form' => $form->createView()
         ]);
     }
 

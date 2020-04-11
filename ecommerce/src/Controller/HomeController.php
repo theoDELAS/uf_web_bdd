@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Search;
 use App\Form\SearchType;
 use App\Repository\CategoryRepository;
 use App\Repository\PlatformRepository;
@@ -27,17 +28,35 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProductRepository $product)
+    public function index(ProductRepository $product, Request $request)
     {
+        $search = new Search();
+        $form = $this->createForm(SearchType::class, $search);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            if ($product->findBy(['title' => $form->getData()->getSearch()])) {
+                return $this->redirectToRoute('product_show', [
+                    'slug' => $form->getData()->getSearch()
+                ]);
+            } else {
+                $this->addFlash(
+                    'danger',
+                    "Le jeu que vous cherchez n'existe pas"
+                );
+            }
+        }
         return $this->render(
             'home/index.html.twig',
             [
-                'products' => $product->findBestProducts(3)
+                'products' => $product->findBestProducts(3),
+                'form' =>$form->createView()
             ]
         );
     }
 
-    public function navBar(EntityManagerInterface $manager, ProductRepository $repo, Request $request)
+    public function navBar()
     {
         return $this->render('partials/navbar.html.twig', [
             'categories' => $this->categoryRepository->findAll(),

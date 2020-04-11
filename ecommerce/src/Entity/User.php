@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use Cocur\Slugify\Slugify;

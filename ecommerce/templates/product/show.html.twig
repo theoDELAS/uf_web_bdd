@@ -76,7 +76,7 @@
                                     <strong>{{ comment.author.firstName }}</strong> <em class="text-muted">le {{ comment.createdAt | date('d/m/Y')}}</em> :
                                 </div>
                                 {% for productHist in inHistorical %}
-                                {% if productHist.mail == comment.author.email %}
+                                {% if productHist.mail == comment.author.email and loop.last%}
                                     <div class="isBuy ml-auto">
                                         <i class="fas fa-user-check fa-2x"></i>
                                     </div>

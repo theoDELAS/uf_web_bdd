@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="container py-3">
+        {% include 'partials/search.html.twig' %}
         <h2 class="my-5 text-center h1 ">Jeux en vente actuellement</h2>
         {% for product in pagination.data %}
             <div class="card card-product-list p-3 mb-4">
@@ -69,45 +70,6 @@
                 </div> <!-- row.// -->
             </div>
         {% endfor %}
-
-
-
-
-
-{#        <div class="row">#}
-{#            {% for product in pagination.data %}#}
-{#                <div class="col-md-4 mb-3">#}
-{#                    <div class="card">#}
-{#                        <div class="card-header">#}
-{#                            <h3 class="card-title text-center text-capitalize">{{ product.title }}</h3>#}
-{#                        </div>#}
-{#                        <img class="card-img-top" src="{{ product.coverImage }}" alt="Card image cap">#}
-{#                        <div class="card-body">#}
-{#                            <blockquote class="blockquote mb-0">#}
-{#                                <p class="card-text">{{ product.description }}</p>#}
-{#                                <footer class="blockquote-footer">Catégorie : {{ product.category.name }}</footer>#}
-{#                                <footer class="blockquote-footer">Plateforme :#}
-{#                                    {% for platform in product.platforms %}#}
-{#                                        {{ platform.name }} /#}
-{#                                    {% endfor %}#}
-{#                                </footer>#}
-{#                            </blockquote>#}
-{#                            <div class="d-flex justify-content-around py-3">#}
-{#                                <p class="card-text font-weight-bold">{{ product.price }}€</p>#}
-{#                                {% if product.comments | length > 0 %}#}
-{#                                    {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}#}
-{#                                {% else %}#}
-{#                                    <p>Pas encore noté</p>#}
-{#                                {% endif %}#}
-{#                            </div>#}
-{#                            <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary btn-block mb-1">Consulter</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
-
-        {#    Pagination    #}
         {{ pagination.display() }}
     </div>
 {% endblock %}
