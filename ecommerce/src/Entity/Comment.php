@@ -32,7 +32,6 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=10, minMessage="Votre commentaire doit faire au minimum 10 caractères")
      */
     private $content;
 

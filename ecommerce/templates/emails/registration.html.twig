@@ -1,4 +1,17 @@
 <h1>Facture et code d'activation</h1>
-<p>Nom : {{ app.user.firstName }}</p>
-<p>Email : {{ app.user.email }}</p>
-<p>Message : Voici votre facture et votre code d'activation de votre jeu</p>
+<p>Merci d'avoir acheté sur notre site. Vous trouverez ci-joint votre facture ainsi que les codes d'activation qui vous permettra de jouer à vos jeux</p>
+<h3>Facture</h3>
+Numéro de la facture : n°{{ historical.id }} <br>
+Nombre d'article : {{ historical.products | length }}<br>
+Les articles :
+    {% for product in historical.products %}
+        <b>{{ product.title }}</b> ({{ product.price }}&euro;){% if not loop.last %} / {% endif %}
+    {% endfor %}<br>
+Montant total : {{ historical.amount }}&euro;<br>
+Acheté le : {{ historical.createdAt | date('d/m/Y') }}<br>
+<hr>
+{% for product in products %}
+    <p>
+        {{ product.title }} : {{ codes[loop.index0] }}
+    </p>
+{% endfor %}

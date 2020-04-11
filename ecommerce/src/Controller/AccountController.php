@@ -237,14 +237,16 @@ class AccountController extends AbstractController
      * @IsGranted("ROLE_USER")
      *
      */
-    public function restockAccount(EntityManagerInterface $manager)
+    public function restockAccount(EntityManagerInterface $manager, Request $request)
     {
         $user = $this->getUser();
         $user->setBalance($user->getBalance() + 100);
         $manager->persist($user);
         $manager->flush();
 
-        return $this->redirectToRoute('account_index');
+        $request->getSession();
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
     }
 
 

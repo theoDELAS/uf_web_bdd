@@ -17,8 +17,9 @@
                             <p class="blockquote-footer">Plateforme :
                                 {% for platform in platforms %}
                                     <a href="{{ path('platform_index', {'id': platform.id}) }}">
-                                        {{ platform.name }} /
+                                        {{ platform.name }}
                                     </a>
+                                    {% if not loop.last %}/{% endif %}
                                 {% endfor %}
                             </p>
                             <p>{{ product.price }} &euro;</p>
