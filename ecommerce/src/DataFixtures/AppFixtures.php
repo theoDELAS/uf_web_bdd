@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
             ->setLastName('Delas')
             ->setEmail('theo.delas@gmail.com')
             ->setHash($this->encoder->encodePassword($adminUser, 'password'))
-            ->setPicture('https://randomuser.me/portraits/men/13.jpg')
+            ->setPicture('https://randomuser.me/portraits/men/9.jpg')
             ->setIntroduction($faker->sentence())
             ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
             ->addUserRole($adminRole)
@@ -82,7 +82,7 @@ class AppFixtures extends Fixture
             'PC',
             'XBOX',
             'PS4',
-            'Stadia'
+            'Switch'
         );
 
         $platformsTab = [];
@@ -137,41 +137,6 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
             $users[] = $user;
-        }
-
-         // Génere des produits fake
-        for ($i = 0; $i < 20; $i++) {
-            $coverImage = "https://picsum.photos/id/".mt_rand(1, 500)."/250/200";
-
-            $user = $users[mt_rand(0, count($users) - 1)];
-
-            $product = new Product();
-            $product->setTitle($faker->word);
-            $product->setDescription($faker->text);
-            $product->setPrice($faker->numberBetween($min = 5, $max = 50));
-            $product->setCoverImage($coverImage);
-            $product->setCategory($categoriesTab[mt_rand(0, sizeof($categories) - 1)]);
-
-            foreach ($platformsTab as $platform) {
-                if (mt_rand(0, 5) > 2) {
-                    $product->addPlatform($platform);
-                }
-            }
-            $product->setAuthor($user);
-
-
-            // Gestion des commentaires
-            $buyer = $users[mt_rand(0, count($users) -1)];
-
-            if(mt_rand(0, 1)) {
-                $comment = new Comment();
-                $comment->setContent($faker->paragraph())
-                    ->setRating(mt_rand(1, 5))
-                    ->setAuthor($buyer)
-                    ->setProduct($product);
-                $manager->persist($comment);
-            }
-            $manager->persist($product);
         }
         $manager->flush();
     }

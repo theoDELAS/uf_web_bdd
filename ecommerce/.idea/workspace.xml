@@ -160,23 +160,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Service" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\partials" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\platform" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\src" />
-      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\product" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\emails" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\product" />
       <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\platform" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\src\Service" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\partials" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\templates\admin\platform" />
+      <recent name="C:\Users\theod\Desktop\Ynov\2iemeAnnee\PROJETS\uf_web_bdd\ecommerce\src" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -223,6 +223,7 @@
       <workItem from="1586331803270" duration="13225000" />
       <workItem from="1586425743893" duration="3729000" />
       <workItem from="1586607574375" duration="16414000" />
+      <workItem from="1586696519980" duration="12366000" />
     </task>
     <servers />
   </component>
@@ -260,15 +261,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="454" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585046622803" />
-    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1586625471236">
+    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1586710733298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586625471236" />
+    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586710733298" />
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584437432919" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586619256222">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586711572462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586619256222" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586711572462" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584435793411" />
   </component>
 </project>

@@ -49,7 +49,7 @@
                              {% for product in app.user.panier.product %}
                                 <div class="row cart-detail">
                                     <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                        <img src="{{ product.coverImage }}">
+                                        <img class="game-img" src="{{ product.coverImage }}">
                                     </div>
                                     <div class="col-lg-5 col-sm-5 col-5 cart-detail-product">
                                         <p>{{ product.title }}</p>
@@ -108,7 +108,7 @@
 </nav>
 
 {% for label, messages in app.flashes %}
-    <div class="container">
+    <div class="container mt-4">
         <div class="alert alert-{{ label }}" role="alert">
             {% for message in messages %}
                 <p>{{ message | raw }}</p>

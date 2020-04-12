@@ -35,14 +35,14 @@ class ProductController extends AbstractController
                 ]);
             } else {
                 $this->addFlash(
-                    'danger',
+                    'warning',
                     "Le jeu que vous cherchez n'existe pas"
                 );
             }
         }
 
         $pagination->setEntityClass(Product::class)
-                    ->setPage($page);
+            ->setPage($page);
 
         return $this->render('product/index.html.twig', [
             'pagination' => $pagination,

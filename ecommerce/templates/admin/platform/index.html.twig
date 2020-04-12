@@ -5,6 +5,7 @@
 {% block body %}
     <div class="container text-center">
         <h1 class="my-5">Gestion des plateformes</h1>
+        <a href="{{ path('admin_platform_create') }}" class="btn btn-outline-primary my-4 btn-block"><i class="fas fa-plus"></i></a>
 
         <table class="table table-hover">
             <thead>
@@ -28,6 +29,5 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{{ path('admin_platform_create') }}" class="btn btn-success w-100"><i class="fas fa-plus"></i></a>
     </div>
 {% endblock %}

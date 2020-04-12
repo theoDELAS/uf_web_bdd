@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container py-5">
+        <h2 class="my-4">Détail des factures</h2>
+        {% for historical in historicals %}
         <div class="alert alert-light">
-            <h2 class="my-4">Détail des factures</h2>
-            {% for historical in historicals %}
             <dl class="row">
                 <dt class="col-md-4">Numéro de la facture :</dt>
                 <dd class="col-md-8 pb-2">n°{{ historical.id }}</dd>
@@ -15,7 +15,7 @@
                 <dt class="col-md-4">Les articles :</dt>
                 <dd class="col-md-8 pb-2">
                     {% for product in historical.products %}
-                        {{ product.title }} ({{ product.price }}&euro;){% if not loop.last %} / {% endif %}
+                        <span class="font-weight-bold">{{ product.title }}</span> ({{ product.price }}&euro;){% if not loop.last %} / {% endif %}
                     {% endfor %}
                 </dd>
                 <dt class="col-md-4">Montant total :</dt>
@@ -23,8 +23,8 @@
                 <dt class="col-md-4">Acheté le :</dt>
                 <dd class="col-md-8 pb-2">{{ historical.createdAt | date('d/m/Y') }}</dd>
             </dl>
-                <hr>
-            {% endfor %}
         </div>
+
+            {% endfor %}
     </div>
 {% endblock %}

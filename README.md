@@ -45,5 +45,5 @@ La page d'accueil du site est un page montrant les 3 jeux les mieux notés (note
 Il vous est donc possible de donner votre avis sur un jeu, que vous l'ayez acheté ou non.  
 Cependant, si vous avez acheté le jeu sur ce site, un petit macaron se trouvera en haut a droite de votre commentaire afin de l'indiquer aux autres utilisateurs.  
 (voir ci-dessous)  
-![Avis client certifié](./screens/commentaire_certifié.PNG)  
+![Avis client certifié](./screens/commentaire_certifié.png)  
 

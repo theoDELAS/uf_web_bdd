@@ -21,9 +21,9 @@ class StatsService
         $ps4 = $this->getPLaystationCount();
         $xbox = $this->getXboxCount();
         $pc = $this->getPcCount();
-        $stadia = $this->getStadiaCount();
+        $switch = $this->getSwitchCount();
 
-        return compact('users', 'products', 'comments', 'ps4', 'xbox', 'pc', 'stadia');
+        return compact('users', 'products', 'comments', 'ps4', 'xbox', 'pc', 'switch');
     }
 
     public function getCount($entity, $alias)
@@ -61,9 +61,9 @@ class StatsService
         return $this->manager->createQuery("SELECT COUNT(p)FROM App\Entity\Product p JOIN p.platforms pl WHERE pl.name = 'PC'")->getSingleScalarResult();
     }
 
-    public function getStadiaCount()
+    public function getSwitchCount()
     {
-        return $this->manager->createQuery("SELECT COUNT(p)FROM App\Entity\Product p JOIN p.platforms pl WHERE pl.name = 'Stadia'")->getSingleScalarResult();
+        return $this->manager->createQuery("SELECT COUNT(p)FROM App\Entity\Product p JOIN p.platforms pl WHERE pl.name = 'Switch'")->getSingleScalarResult();
     }
 
     public function getProductsStats($direction)

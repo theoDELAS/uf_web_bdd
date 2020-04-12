@@ -42,7 +42,7 @@ class HomeController extends AbstractController
                 ]);
             } else {
                 $this->addFlash(
-                    'danger',
+                    'warning',
                     "Le jeu que vous cherchez n'existe pas"
                 );
             }

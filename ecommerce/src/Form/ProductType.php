@@ -45,7 +45,7 @@ class ProductType extends ApplicationType
                 ['label' => 'Catégorie']
             )
             ->add(
-                'platforms', EntityType::class, [ // add this
+                'platforms', EntityType::class, [
                     'class' => Platform::class,
                     'label'     => 'Plateformes de jeu',
                     'expanded'  => true,

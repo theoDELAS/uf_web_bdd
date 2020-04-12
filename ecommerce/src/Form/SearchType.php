@@ -15,9 +15,12 @@ class SearchType extends ApplicationType
             ->add(
                 'search',
                 TextType::class,
-                $this->getConfiguration('Titre', 'Nom du jeu à rechercher')
-            )
-        ;
+                $this->getConfiguration('Titre', 'Nom du jeu à rechercher', [
+                    'attr' => [
+                        'aria-describedby' => "button-addon2"
+                    ]
+                ]))
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

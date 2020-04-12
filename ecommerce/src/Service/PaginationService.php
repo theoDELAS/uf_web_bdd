@@ -24,7 +24,7 @@ class PaginationService {
      *
      * @var integer
      */
-    private $limit = 9;
+    private $limit = 5;
 
     /**
      * La page sur laquelle on se trouve actuellement
@@ -132,7 +132,7 @@ class PaginationService {
      * Permet de récupérer les données paginées pour une entité spécifique
      *
      * Elle se sert de Doctrine afin de récupérer le repository pour l'entité spécifiée
-     * puis grâce au repository et à sa fonction findBy() on récupère les données dans une
+     * puis grâce au repository et à sa fonction findBy() on récupère les données dans une 
      * certaine limite et en partant d'un offset
      *
      * @throws Exception si la propriété $entityClass n'est pas définie
