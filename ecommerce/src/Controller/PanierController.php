@@ -110,8 +110,8 @@ class PanierController extends AbstractController
                     }
 
                     $transport = (new \Swift_SmtpTransport('smtp.googlemail.com', 465, 'ssl'))
-                        ->setUsername('USERNAME')
-                        ->setPassword('PASSWORD')
+                        ->setUsername('theo.delas@gmail.com')
+                        ->setPassword('HTqgQf*iZPL$m4gTLt7U')
                     ;
                     $mailer = new \Swift_Mailer($transport);
                     $mail = $form->getData()->getMail();

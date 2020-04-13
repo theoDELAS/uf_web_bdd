@@ -1,4 +1,4 @@
-# Projet e-shopde 2ème année à Ynov Informatique
+# Projet e-shop de 2ème année à Ynov Informatique
 
 ## Les objectifs visés
 
@@ -32,8 +32,12 @@ Les compétences à acquérir lors de la création de ce site e-commerce sont :
 
 ## Présentation du site
 
-Pour ce projet, j'ai choisi de réaliser un site vendant des jeux vidéos.  
+Pour ce projet, j'ai choisi de réaliser un site de e-commerce vendant des jeux vidéos.  
+Pour cela, j'ai choisi d'utiliser le Framework Symfony.  
+Je n'avais aucune connaisance dans ce framework avant de commencer mon projet, j'ai donc dû me documenter, et faire un projet TP pour apprendre comment ce dernier fonctionne.  
+J'ai aussi décider d'utiliser Bootstrap pour l'apparence du site, que j'utilise depuis l'année dernière.  
 Vous trouverez ce site à l'URL suivante : <http://theodelas.fr>  
+Pour l'architecture du site, se référer aux dossier dans mon espace github à cette adresse : <https://github.com/theoDELAS/uf_web_bdd/tree/master/ecommerce>
 
 ***
 

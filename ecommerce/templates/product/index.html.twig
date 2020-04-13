@@ -9,14 +9,14 @@
         {% for product in pagination.data %}
             <div class="card card-product-list p-3 mb-4">
                 <div class="row no-gutters">
-                    <aside class="col-md-3">
-                        <img class="w-100" src="{{product.coverImage}}">
+                    <aside class="col-lg-3 text-center">
+                        <img class="game-img-show mb-4" src="{{product.coverImage}}">
                     </aside> <!-- col.// -->
-                    <div class="col-md-6 px-4">
-                        <div class="info-main border-right mr-4">
+                    <div class="col-lg-6 px-5">
+                        <div class="info-main border-right pr-4">
                             <h3 class="title text-capitalize">{{ product.title }}</h3>
                             <div class="row">
-                                <div class="col-md-6 pt-3 blockquote text-muted display-4">
+                                <div class="col-lg-6 pt-3 blockquote text-muted display-4">
                                     <p class="blockquote-footer">Catégorie : <a href="{{ path('category_index', {'id': product.category.id}) }}">{{ product.category.name }}</a></p>
                                     <p class="blockquote-footer">Plateforme{% if product.platforms | length > 1 %}s{% endif %} :
                                         {% for platform in product.platforms %}
@@ -27,7 +27,7 @@
                                         {% endfor %}
                                     </p>
                                 </div>
-                                <div class="rating-wrap my-4 col-md-6">
+                                <div class="col-lg-6">
                                     {% if product.comments | length > 0 %}
                                         {% include 'partials/rating.html.twig' with {'rating': product.avgRatings} %}
                                     {% else %}
@@ -36,11 +36,11 @@
                                 </div> <!-- rating-wrap.// -->
                             </div>
 
-                            <p class="text-justify pr-5">{{ product.description }}</p>
+                            <p class="pr-5">{{ product.description }}</p>
                         </div> <!-- info-main.// -->
                     </div> <!-- col.// -->
-                    <aside class="col-sm-3">
-                        <div class="info-aside">
+                    <aside class="col-lg-3">
+                        <div class="info-aside pr-4">
                             <div class="price-wrap">
                                 <span class="price h4">{{ product.price }}&euro;</span>
                             </div> <!-- info-price-detail // -->
@@ -48,23 +48,24 @@
                             <p>
                                 <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-info btn-block mb-1">Consulter</a>
                                 {% if app.user %}
-                                    {% if product not in app.user.panier.product %}
-                                        <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-block btn-success">Ajouter au panier</a>
-                                    {% else %}
-                                        <div class="inCart text-muted font-italic">
-                                            Ce jeu est actuellement dans votre panier
-                                        </div>
-                                    {% endif %}
-                                    {% if product not in app.user.favorite.product %}
-                                        <a href="{{ path('product_add_favorite', {'id': product.id}) }}" class="btn btn-outline-dark btn-block"><i class="fa fa-heart"></i>
-                                            <span class="text">Ajouter aux favoris</span>
-                                        </a>
-                                    {% else %}
-                                        <a href="{{ path('favorite_delete', {'id': product.id}) }}" class="btn btn-outline-danger btn-block"><i class="fa fa-heart"></i>
-                                            <span class="text">Retirer des favoris</span>
-                                        </a>
-                                    {% endif %}
-                                {% endif %}
+                                {% if product not in app.user.panier.product %}
+                                <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-block btn-success">Ajouter au panier</a>
+                                {% else %}
+                            <div class="inCart mb-3 text-muted font-italic">
+                                Ce jeu est actuellement dans votre panier
+                            </div>
+                            {% endif %}
+                            {% if product not in app.user.favorite.product %}
+                                <a href="{{ path('product_add_favorite', {'id': product.id}) }}" class="btn btn-outline-dark btn-block"><i class="fa fa-heart"></i>
+                                    <span class="text">Ajouter aux favoris</span>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('favorite_delete', {'id': product.id}) }}" class="btn btn-outline-danger btn-block"><i class="fa fa-heart"></i>
+                                    <span class="text">Retirer des favoris</span>
+                                </a>
+                            {% endif %}
+                            {% endif %}
+                            </p>
                         </div> <!-- info-aside.// -->
                     </aside> <!-- col.// -->
                 </div> <!-- row.// -->

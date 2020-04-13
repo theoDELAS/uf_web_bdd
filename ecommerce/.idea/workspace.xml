@@ -51,7 +51,6 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/easycorp/easy-log-handler" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/symfony/flex" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
@@ -147,6 +146,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
       <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Y1q0WhXGkFZpubm6YBWw9e2qal" />
@@ -224,7 +224,7 @@
       <workItem from="1586425743893" duration="3729000" />
       <workItem from="1586607574375" duration="16414000" />
       <workItem from="1586696519980" duration="12922000" />
-      <workItem from="1586773994175" duration="3326000" />
+      <workItem from="1586773994175" duration="13008000" />
     </task>
     <servers />
   </component>
@@ -262,15 +262,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="454" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585046622803" />
-    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1586710733298">
+    <state x="1117" y="257" width="646" height="532" key="find.popup" timestamp="1586792530616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586710733298" />
+    <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586792530616" />
     <state x="1117" y="257" width="646" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584437432919" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586711572462">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586790020908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586711572462" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586790020908" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584435793411" />
   </component>
 </project>
