@@ -43,7 +43,7 @@
                         {% if product not in app.user.panier.product %}
                             <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-block btn-success">Ajouter au panier</a>
                             {% else %}
-                        <div class="inCart text-muted font-italic">
+                        <div class="inCart mb-3 text-muted font-italic">
                             Ce jeu est actuellement dans votre panier
                         </div>
                         {% endif %}

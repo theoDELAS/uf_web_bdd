@@ -28,23 +28,23 @@
                     <div class="col-6">
                         {% if app.user  %}
                             {% if product not in app.user.panier.product %}
-                                    <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-success mb-3">Ajouter au panier</a>
+                                    <a href="{{ path('product_add', {'slug': product.slug}) }}" class="btn btn-success mb-3 btn-block">Ajouter au panier</a>
                             {% else %}
                                 <div class="inCart mt-5 text-muted font-italic mb-3">
                                     Ce jeu est actuellement dans votre panier
                                 </div>
                             {% endif %}
                             {% if product not in app.user.favorite.product %}
-                                <a href="{{ path('product_add_favorite', {'id': product.id}) }}" class="btn btn-outline-dark mb-3"><i class="fa fa-heart"></i>
+                                <a href="{{ path('product_add_favorite', {'id': product.id}) }}" class="btn btn-outline-dark mb-3 btn-block"><i class="fa fa-heart"></i>
                                     <span class="text">Ajouter aux favoris</span>
                                 </a>
                             {% else %}
-                                <a href="{{ path('favorite_delete', {'id': product.id}) }}" class="btn btn-outline-danger mb-3"><i class="fa fa-heart"></i>
+                                <a href="{{ path('favorite_delete', {'id': product.id}) }}" class="btn btn-outline-danger mb-3 btn-block"><i class="fa fa-heart"></i>
                                     <span class="text">Retirer des favoris</span>
                                 </a>
                             {% endif %}
                         {% else %}
-                            <div class="w-25 mt-5 text-muted font-italic">
+                            <div class="w-50 mt-5 text-muted font-italic">
                                 <a href="{{ path('account_login') }}">Connectez-vous</a> ou <a href="{{ path('account_register') }}">inscrivez-vous</a> pour ajouter ce produit à votre panier
                             </div>
                         {% endif %}

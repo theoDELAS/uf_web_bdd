@@ -13,7 +13,12 @@ class HistoricalType extends ApplicationType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mail', TextType::class, $this->getConfiguration('Adresse mail' ,"Mail où vous sera envoyé votre facture ainsi que votre code d'activation du jeu"))
+            ->add('mail', TextType::class,
+                $this->getConfiguration('Adresse mail' ,"Adresse où vous sera envoyé la facture et les codes", [
+                    'attr' => [
+                        'class' => "w-75"
+                    ]
+                ]))
         ;
     }
 
